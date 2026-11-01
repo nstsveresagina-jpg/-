@@ -16,5 +16,10 @@ PY
 # animation libraries (all free / open source)
 npm i -g hyperframes
 mkdir -p /home/user/remotion-test && cd /home/user/remotion-test && [ -f package.json ] || npm init -y >/dev/null
-npm i remotion @remotion/cli react react-dom animejs @react-spring/web pixi.js p5 paper tsparticles @tsparticles/engine gl-transitions gl-transition three matter-js @dimforge/rapier2d-compat @dimforge/rapier3d-compat
+npm i remotion @remotion/cli react react-dom animejs @react-spring/web pixi.js p5 paper tsparticles @tsparticles/engine gl-transitions gl-transition three matter-js @dimforge/rapier2d-compat @dimforge/rapier3d-compat tone
+# speech recognition (MIT) and a separate venv for Chatterbox TTS (MIT; pins its own torch)
+pip install -q faster-whisper
+python3 -m venv /home/user/venvs/chatterbox
+/home/user/venvs/chatterbox/bin/pip install -q torch==2.6.0 torchaudio==2.6.0 --index-url https://download.pytorch.org/whl/cpu
+/home/user/venvs/chatterbox/bin/pip install -q chatterbox-tts
 echo "setup done"
