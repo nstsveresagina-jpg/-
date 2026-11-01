@@ -16,5 +16,5 @@
 - `setup.sh` reinstalls the free toolchain (voices, music tools, Stable Diffusion, upscaler).
 - Network allowlist must include: huggingface.co, *.huggingface.co, models.silero.ai, api.openverse.org, freesound.org, cdn.freesound.org, upload.wikimedia.org.
 - Voices: Piper ru_RU (irina, denis, dmitri, ruslan) — free incl. commercial (check each voice's licence); Silero v4_ru — free for non-commercial use only.
-- Animation libraries: Remotion (free for individuals and companies of up to 3 people; larger companies need a paid licence), HyperFrames (Apache-2.0), anime.js (MIT), React Spring (MIT), PixiJS (MIT), p5.js (LGPL-2.1), Paper.js (MIT).
+- Animation libraries: Remotion (free for individuals and companies of up to 3 people; larger companies need a paid licence), HyperFrames (Apache-2.0), anime.js (MIT), React Spring (MIT), PixiJS (MIT), p5.js (LGPL-2.1), Paper.js (MIT), tsParticles (MIT).
 - Image models: stabilityai/sdxl-turbo and stable-diffusion-xl-base-1.0 (check the Stability AI licence before any commercial use); upscaler RealESRGAN_x4plus_anime_6B (BSD-3).
