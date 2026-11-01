@@ -13,4 +13,8 @@ from huggingface_hub import snapshot_download
 for repo, d in [("stabilityai/sdxl-turbo", "sdxl-turbo"), ("stabilityai/stable-diffusion-xl-base-1.0", "sdxl-base")]:
     snapshot_download(repo, allow_patterns=["*.json", "*.txt", "tokenizer*/*", "text_encoder/model.fp16.safetensors", "text_encoder_2/model.fp16.safetensors", "unet/diffusion_pytorch_model.fp16.safetensors", "vae/diffusion_pytorch_model.fp16.safetensors"], local_dir=f"/home/user/models/{d}")
 PY
+# animation libraries (all free / open source)
+npm i -g hyperframes
+mkdir -p /home/user/remotion-test && cd /home/user/remotion-test && [ -f package.json ] || npm init -y >/dev/null
+npm i remotion @remotion/cli react react-dom animejs @react-spring/web pixi.js p5 paper
 echo "setup done"
