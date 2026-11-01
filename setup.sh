@@ -16,5 +16,5 @@ PY
 # animation libraries (all free / open source)
 npm i -g hyperframes
 mkdir -p /home/user/remotion-test && cd /home/user/remotion-test && [ -f package.json ] || npm init -y >/dev/null
-npm i remotion @remotion/cli react react-dom animejs @react-spring/web pixi.js p5 paper tsparticles @tsparticles/engine gl-transitions gl-transition three
+npm i remotion @remotion/cli react react-dom animejs @react-spring/web pixi.js p5 paper tsparticles @tsparticles/engine gl-transitions gl-transition three matter-js @dimforge/rapier2d-compat @dimforge/rapier3d-compat
 echo "setup done"
