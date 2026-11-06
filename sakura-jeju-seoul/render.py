@@ -305,11 +305,10 @@ def label(small, big, icon, k_in, k_out):
 K_LOGO = 59
 def finale():
     t_in, t_out = beat(46) + 0.10, beat(K_LOGO) - 0.16
-    ELS.append(El(text_layer('10 дней / 9 ночей · 4 города', F_BODY, 42), (W / 2, 392), t_in, t_out, rise=36))
-    ELS.append(CountUp((W / 2, 500), t_in + 0.16, t_out))
-    ELS.append(El(pill('ЗА ЧЕЛОВЕКА', F_HEAD, 46, NAVY, ORANGE, 40, 22), (W / 2, 616), t_in + 1.0, t_out, anim='pop', d_in=0.42, scale_from=0.6))
-    ELS.append(El(pill('бронирование и детали — в Direct', F_BODY, 38, NAVY, CREAM, 38, 19), (W / 2, 712), t_in + 1.25, t_out, rise=40))
-    ELS.append(El(pill('международные авиабилеты в стоимость не входят', F_BODY, 28, CREAM, NAVY, 30, 14), (W / 2, 1690), t_in + 1.4, t_out, rise=20))
+    ELS.append(El(text_layer('1–10 апреля 2027 · 10 дней / 9 ночей', F_BODY, 42), (W / 2, 392), t_in, t_out, rise=36))
+    ELS.append(El(pill('ПИШИТЕ В DIRECT', F_HEAD, 58, NAVY, ORANGE, 50, 28), (W / 2, 504), t_in + 0.16, t_out, anim='pop', d_in=0.42, scale_from=0.6))
+    ELS.append(El(pill('бронирование и подробности тура', F_BODY, 38, NAVY, CREAM, 38, 19), (W / 2, 628), t_in + 0.40, t_out, rise=40))
+    ELS.append(El(pill('международные авиабилеты приобретаются самостоятельно', F_BODY, 28, CREAM, NAVY, 30, 14), (W / 2, 1690), t_in + 0.7, t_out, rise=20))
     t_h = beat(K_LOGO) + 0.02
     logo = Image.open(os.path.join(HERE, 'logo.png')).convert('RGBA'); lh = 205
     logo = logo.resize((int(logo.width * lh / logo.height), lh), Image.LANCZOS)
