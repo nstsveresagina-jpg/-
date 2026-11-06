@@ -1,6 +1,6 @@
 # Reels «Сакура от Чеджу до Сеула» (JEJU TRIP)
 
-`sakura_jeju_seoul_reel_web.mp4`: 1080×1920, 30 fps, 29,5 с (полное качество `sakura_jeju_seoul_reel.mp4` собирается локально). Обложка `cover.jpg`, текст в зоне 3:4.
+`sakura_jeju_seoul_reel_web.mp4`: 1080×1920, 30 fps, 29,5 с (полное качество `sakura_jeju_seoul_reel.mp4` собирается локально). Обложка `cover.jpg` (`python3 cover2.py`: фото ханока с сакурой с Pinterest, кремовая карточка, текст в зоне 3:4; первый вариант на кадре из ролика — `cover.py`). Описание поста — `description.txt`. Версия для загрузки в Instagram — `sakura_jeju_seoul_reel_insta.mp4` (17,7 МБ). Страница со скачиванием: https://claude.ai/artifact/UHaYEFvFBgKMa12dJ3XWUe
 Шаблон и музыка те же, что у Reels «Декабрь без зимы — Фукуок» (`../phuquoc-december`, 138 BPM): склейки в бит, текст сверху, яркий цветокор, логотип на финальном ударе. Добавлены падающие лепестки сакуры и лёгкое затемнение под верхним текстом (на светлой сакуре иначе не читается).
 Шрифты: Advaken Sans (заголовки) и Comfortaa Light (текст). Цены в ролике нет.
 

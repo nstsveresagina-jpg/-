@@ -28,3 +28,6 @@
 | seoul_starfield |  | 1000libraries | https://www.pinterest.com/1000libraries/_tpd_social/ |
 | seoul_banpo |  | traveltoexist1 | https://www.pinterest.com/traveltoexist1/instagram-posts/ |
 | seoul_avenue |  | ParkKaterina02 | https://www.pinterest.com/ParkKaterina02/like-it/ |
+
+## Фото обложки
+| cover_photo.jpg | ханок и белая сакура | TuanAnhhHao | https://www.pinterest.com/TuanAnhhHao/world-landscape/ |
