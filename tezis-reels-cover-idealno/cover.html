@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<title>TEZIS Reels Cover Idealno</title>
+<style>
+  @font-face { font-family:"Onest"; src:url(fonts/Onest-400.ttf); font-weight:400; }
+  @font-face { font-family:"Onest"; src:url(fonts/Onest-500.ttf); font-weight:500; }
+  @font-face { font-family:"Onest"; src:url(fonts/Onest-700.ttf); font-weight:700; }
+  :root { --copper:#C49A72; --ink:#1E1814; --milk:#F5F1EA; }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html, body { background:var(--milk); }
+  /* 9:16; в сетке профиля видна центральная зона 3:4 (y 240-1680) - весь текст внутри неё */
+  .s { width:1080px; height:1920px; position:relative; overflow:hidden; font-family:"Onest",sans-serif; color:var(--ink); }
+  /* кадр из ролика как есть, без цветокоррекции; вшитый титр убран (clean.py) */
+  .ph { position:absolute; inset:0; background:url(src/frame.jpg) center / cover no-repeat; }
+  /* только мягкий молочный градиент под текстом */
+  .ph::after { content:""; position:absolute; left:0; right:0; bottom:0; height:1000px;
+    background:linear-gradient(rgba(245,241,234,0) 0, rgba(245,241,234,.78) 34%, rgba(245,241,234,.94) 60%, var(--milk)); }
+  .a { position:absolute; z-index:1; left:72px; right:72px; }
+  .head { top:282px; display:flex; align-items:center; gap:30px; }
+  .head img { height:42px; display:block; }
+  .head i { flex:1; height:1.5px; background:rgba(30,24,20,.35); }
+  .t { top:1150px; }
+  .kick { font-size:25px; font-weight:500; letter-spacing:.32em; text-transform:uppercase; color:rgba(30,24,20,.6); }
+  .bar { width:92px; height:3px; background:var(--copper); margin:26px 0 30px; }
+  h1 { font-size:150px; font-weight:700; line-height:.94; letter-spacing:-.045em; text-transform:uppercase; }
+  h1 span { color:var(--copper); }
+  .sub { margin-top:34px; font-size:32px; font-weight:400; letter-spacing:.01em; color:rgba(30,24,20,.72); }
+</style>
+</head>
+<body>
+<section class="s">
+  <div class="ph"></div>
+  <div class="a head"><img src="src/logo_dark.png" alt="TEZIS"><i></i></div>
+  <div class="a t">
+    <div class="kick">Детали ремонта TEZIS</div>
+    <div class="bar"></div>
+    <h1>Идеально<br><span>это:</span></h1>
+    <div class="sub">свет, двери, мрамор, стекло</div>
+  </div>
+</section>
+</body>
+</html>
