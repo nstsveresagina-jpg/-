@@ -1,0 +1,85 @@
+<!doctype html><html lang="ru"><head><meta charset="utf-8"><style>
+@font-face{font-family:Head;src:url(fonts/AdvakenSans.otf)}
+@font-face{font-family:Body;src:url(fonts/Comfortaa-Light.ttf)}
+:root{--cream:#FBF6EC;--navy:#1E2B3C;--o:#F7A520;--red:#E8572A}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#888}
+/* Карусель «Да / Но» 1080×1350: два фото друг над другом, на стыке кремовая линия; текст по центру каждой половины */
+.s{width:1080px;height:1350px;position:relative;overflow:hidden;margin:0 auto 30px;background:var(--navy)}
+.half{position:absolute;left:0;right:0;height:675px;background-size:cover;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:26px;padding:0 90px;text-align:center}
+.half::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse 75% 55% at 50% 52%,rgba(15,22,34,.55),rgba(15,22,34,.12) 70%,rgba(15,22,34,0))}
+.half>*{position:relative}
+.top{top:0} .bot{top:675px}
+.seam{position:absolute;left:0;right:0;top:671px;height:8px;background:var(--cream);z-index:3}
+.tag{font:76px/1 Head;letter-spacing:2px;padding:20px 54px 26px;border-radius:999px}
+.da{background:var(--o);color:var(--navy)}
+.no{background:var(--cream);color:var(--red)}
+.tx{font:42px/1.3 Body;color:#fff;text-wrap:balance;max-width:900px;background:rgba(20,29,41,.62);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);padding:20px 36px 24px;border-radius:32px}
+.mark{position:absolute;top:44px;left:50%;transform:translateX(-50%);display:flex;align-items:center;gap:12px;background:var(--cream);border-radius:999px;padding:10px 26px 10px 14px;z-index:4;box-shadow:0 6px 20px rgba(0,0,0,.2)}
+.mark img{height:40px} .mark span{font:22px Head;letter-spacing:1px} .mark i{font-style:normal;color:var(--red)} .mark b{font-weight:400;color:var(--o)}
+.pg{position:absolute;right:44px;bottom:36px;font:24px Body;color:#fff;letter-spacing:3px;opacity:.85;z-index:4;text-shadow:0 1px 8px rgba(0,0,0,.6)}
+/* финальный слайд */
+.fin{background-size:cover;background-position:center}
+.fin::before{content:"";position:absolute;inset:0;background:rgba(14,21,33,.62)}
+.card{position:absolute;left:90px;right:90px;top:250px;bottom:150px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:26px;color:var(--cream)}
+.card .k{font:30px Body;letter-spacing:6px;text-transform:uppercase;color:var(--o)}
+.card h2{font:96px/1 Head;font-weight:400;text-transform:uppercase;letter-spacing:-1px}
+.card h3{font:52px/1.05 Head;font-weight:400;text-transform:uppercase;color:var(--o)}
+.card ul{list-style:none;display:flex;flex-direction:column;gap:12px;font:38px/1.35 Body;margin-top:6px}
+.card .cta{margin-top:18px;background:var(--o);color:var(--navy);font:40px Head;text-transform:uppercase;padding:24px 56px 28px;border-radius:999px}
+.card .sm{font:28px Body;opacity:.8}
+</style></head><body>
+<section class="s" id="s1">
+<div class="half top" style="background-image:url(img/1a.jpg);background-position:center 45%"><div class="tag da">ДА</div><div class="tx">До Кореи лететь далеко</div></div>
+<div class="half bot" style="background-image:url(img/1b.jpg);background-position:center 60%"><div class="tag no">НО</div><div class="tx">но разве бывает слишком далеко до страны, где весной цветёт каждая улица?</div></div>
+<div class="seam"></div>
+<div class="mark"><img src="logo.png"><span><i>JEJU</i> <b>TRIP</b></span></div>
+<div class="pg">01 / 07</div>
+</section>
+<section class="s" id="s2">
+<div class="half top" style="background-image:url(img/2a.jpg);background-position:center 40%"><div class="tag da">ДА</div><div class="tx">Без корейского языка в вывесках легко запутаться</div></div>
+<div class="half bot" style="background-image:url(img/2b.jpg);background-position:center 45%"><div class="tag no">НО</div><div class="tx">с нами вы не потеряетесь: гид рядом, а программа продумана до мелочей</div></div>
+<div class="seam"></div>
+<div class="mark"><img src="logo.png"><span><i>JEJU</i> <b>TRIP</b></span></div>
+<div class="pg">02 / 07</div>
+</section>
+<section class="s" id="s3">
+<div class="half top" style="background-image:url(img/3a.jpg);background-position:center 55%"><div class="tag da">ДА</div><div class="tx">Чтобы встретить рассвет на Сонсан Ильчульбон, придётся встать затемно</div></div>
+<div class="half bot" style="background-image:url(img/3b.jpg);background-position:center 50%"><div class="tag no">НО</div><div class="tx">первое солнце над вулканом в океане стоит каждой минуты сна</div></div>
+<div class="seam"></div>
+<div class="mark"><img src="logo.png"><span><i>JEJU</i> <b>TRIP</b></span></div>
+<div class="pg">03 / 07</div>
+</section>
+<section class="s" id="s4">
+<div class="half top" style="background-image:url(img/4a.jpg);background-position:center 50%"><div class="tag da">ДА</div><div class="tx">Корейская еда бывает очень острой</div></div>
+<div class="half bot" style="background-image:url(img/4b.jpg);background-position:center 55%"><div class="tag no">НО</div><div class="tx">корейское барбекю под тихий звон рюмок соджу невозможно забыть</div></div>
+<div class="seam"></div>
+<div class="mark"><img src="logo.png"><span><i>JEJU</i> <b>TRIP</b></span></div>
+<div class="pg">04 / 07</div>
+</section>
+<section class="s" id="s5">
+<div class="half top" style="background-image:url(img/5a.jpg);background-position:center 50%"><div class="tag da">ДА</div><div class="tx">У дворца Кёнбоккун всегда много людей</div></div>
+<div class="half bot" style="background-image:url(img/5b.jpg);background-position:center 30%;justify-content:flex-start;padding-top:36px"><div class="tag no">НО</div><div class="tx">в ханбоке вход бесплатный, а каждый кадр выглядит как сцена из дорамы</div></div>
+<div class="seam"></div>
+<div class="mark"><img src="logo.png"><span><i>JEJU</i> <b>TRIP</b></span></div>
+<div class="pg">05 / 07</div>
+</section>
+<section class="s" id="s6">
+<div class="half top" style="background-image:url(img/6a.jpg);background-position:center 55%"><div class="tag da">ДА</div><div class="tx">За одну поездку невозможно увидеть всю Корею</div></div>
+<div class="half bot" style="background-image:url(img/6b.jpg);background-position:center 50%"><div class="tag no">НО</div><div class="tx">иногда хватает десяти дней, чтобы понять: сюда нужно вернуться</div></div>
+<div class="seam"></div>
+<div class="mark"><img src="logo.png"><span><i>JEJU</i> <b>TRIP</b></span></div>
+<div class="pg">06 / 07</div>
+</section>
+<section class="s fin" id="s7" style="background-image:url(img/7.jpg)">
+<div class="mark"><img src="logo.png"><span><i>JEJU</i> <b>TRIP</b></span></div>
+<div class="card">
+<div class="k">Корея зовёт</div>
+<h2>Сакура</h2><h3>от Чеджу до Сеула</h3>
+<ul><li>1–10 апреля 2027</li><li>10 дней / 9 ночей</li><li>Чеджу → Пусан → Кёнджу → Сеул</li></ul>
+<div class="cta">Хотите с нами? Пишите в Direct</div>
+<div class="sm">пришлём программу и все подробности</div>
+</div>
+<div class="pg">07 / 07</div>
+</section>
+</body></html>
