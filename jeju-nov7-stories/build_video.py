@@ -9,7 +9,7 @@ STORIES = {
     2: [('v', 'tg_06', 0.5, 3.5, 0.55), ('v', 'tg_08b', 2.0, 3.0, 0.60), ('p', '9924', 4.0, 0.70)],
     3: [('p', '9945', 4.5, 0.66), ('p', '9946', 3.5, 0.55)],
     4: [('v', 'tg_01', 4.0, 5.0, 0.45), ('p', '9929', 3.5, 0.30)],
-    5: [('v', 'tg_20', 8.0, 3.0, 0.55), ('v', 'v_172013', 0.5, 4.5, 0.55), ('v', 'v_171013', 2.0, 3.0, 0.50)],
+    5: [('v', 'tg_20', 8.0, 3.0, 0.55), ('v', 'v_172013', 0.5, 4.5, 0.12), ('v', 'v_171013', 2.0, 3.0, 0.50)],
     6: [('v', 'v_164238', 6.0, 5.0, 0.50), ('v', 'tg_12', 0.2, 5.0, 0.55)],
     7: [('v', 'v_171231', 0.3, 4.5, 0.45), ('p', '9948', 4.0, 0.60)],
 }
@@ -31,7 +31,7 @@ def build(k):
     f.append(''.join(f'[s{i}]' for i in range(len(segs))) + f'concat=n={len(segs)}:v=1:a=0[cat]')
     f.append(f"[cat]pad={W}:1920:0:0:color=0xFBF6EC[bg]")
     f.append(f"[bg][{ov}:v]overlay=0:0:format=auto,format=yuv420p[out]")
-    args += ['-filter_complex', ';'.join(f), '-map', '[out]', '-r', str(FPS), '-c:v', 'libx264', '-preset', 'slow', '-crf', '19',
+    args += ['-filter_complex', ';'.join(f), '-map', '[out]', '-r', str(FPS), '-c:v', 'libx264', '-preset', 'slow', '-crf', '20', '-maxrate', '10M', '-bufsize', '14M',
              '-profile:v', 'high', '-movflags', '+faststart', f'story_{k}.mp4']
     subprocess.run(args, check=True, stdin=subprocess.DEVNULL)
     print('story', k, 'done', flush=True)
