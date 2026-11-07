@@ -96,7 +96,7 @@ window.render = (t) => {
     });
     // акцентные слова подряд держим на одной строке
     let html = '', run = '';
-    G[g].forEach(([, w0], i) => { if (w0.startsWith('*')) run += parts[i]; else { if (run) { html += `<span class="nb">${run}</span>`; run = ''; } html += parts[i]; } });
+    G[g].forEach(([, w0], i) => { if (w0.startsWith('*')) run += (run ? ' ' : '') + parts[i]; else { if (run) { html += `<span class="nb">${run}</span>`; run = ''; } html += parts[i]; } });
     if (run) html += `<span class="nb">${run}</span>`;
     cap.innerHTML = html;
   }
