@@ -1,0 +1,8 @@
+{
+  "enabledPlugins": {
+    "small-business@synced": false,
+    "marketing@synced": false,
+    "operations@synced": false,
+    "claude-code-setup@synced": false
+  }
+}

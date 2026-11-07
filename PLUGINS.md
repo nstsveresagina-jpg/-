@@ -13,8 +13,9 @@
 | video-cleanup | чистка звука и картинки, логотип, титры |
 | image-generation | как правильно описывать картинки для нейросетей |
 | Task Observer | запоминает ваши правила в CLAUDE.md |
-| claude-code-setup | советует автоматизации для проекта |
 | Headroom | чтение больших файлов по частям |
+
+Отключены в этом проекте (файл `.claude/settings.json`), чтобы не тратить лимит: small-business, marketing, operations, claude-code-setup. Включить обратно: `claude plugin enable <имя>@synced --scope project`.
 
 ## 2. Плагин с GitHub (на ПК память сохраняется)
 - claude-mem (Apache-2.0): в Claude Code выполнить
