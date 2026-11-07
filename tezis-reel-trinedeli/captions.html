@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<title>TEZIS Captions</title>
+<style>
+  @font-face { font-family:"Onest"; src:url(fonts/Onest-500.ttf); font-weight:500; }
+  @font-face { font-family:"Onest"; src:url(fonts/Onest-700.ttf); font-weight:700; }
+  @font-face { font-family:"Onest"; src:url(fonts/Onest-800.ttf); font-weight:800; }
+  :root { --copper:#C49A72; --copper-l:#E2BC94; }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html, body { background:transparent; }
+  .s { width:1080px; height:1920px; position:relative; overflow:hidden; font-family:"Onest",sans-serif; }
+  .grad { position:absolute; left:0; right:0; bottom:0; height:820px; background:linear-gradient(rgba(20,15,12,0), rgba(20,15,12,.26) 50%, rgba(20,15,12,.36)); }
+  .tgrad { position:absolute; left:0; right:0; top:0; height:820px; background:linear-gradient(rgba(20,15,12,.34), rgba(20,15,12,.2) 55%, rgba(20,15,12,0)); }
+  .cap { position:absolute; left:70px; right:70px; top:1330px; text-align:center; color:#fff;
+    font-size:64px; font-weight:800; line-height:1.12; letter-spacing:-.015em; text-transform:uppercase;
+    text-shadow:0 0 26px rgba(0,0,0,.45), 0 2px 8px rgba(0,0,0,.4); }
+  .w { display:inline-block; margin:0 .11em; transform-origin:50% 80%; position:relative; }
+  .w.em { color:var(--copper-l); font-size:1.14em; }
+  .nb { white-space:nowrap; }
+  .w.em i { position:absolute; left:0; bottom:-.06em; height:.075em; background:var(--copper); border-radius:3px; }
+  .hook { position:absolute; left:80px; right:80px; top:250px; color:#fff; text-shadow:0 0 22px rgba(0,0,0,.3); }
+  .hook .k { font-size:28px; font-weight:500; letter-spacing:.34em; text-transform:uppercase; color:var(--copper-l); }
+  .hook .bar { height:4px; background:var(--copper); margin:0 0 26px; }
+  .hook .ln { overflow:hidden; }
+  .hook .ln span { display:block; font-size:100px; font-weight:800; line-height:1.0; letter-spacing:-.04em; text-transform:uppercase; }
+  .hook .ln span b { color:var(--copper-l); font-weight:800; }
+  /* ч/б финал по сценарию: рамка камеры, REC и таймкод */
+  .recw { position:absolute; inset:0; }
+  .frame { position:absolute; left:48px; right:48px; top:230px; bottom:330px; }
+  .frame b { position:absolute; width:56px; height:56px; border:0 solid rgba(255,255,255,.85); }
+  .frame b:nth-child(1) { left:0; top:0; border-left-width:3px; border-top-width:3px; }
+  .frame b:nth-child(2) { right:0; top:0; border-right-width:3px; border-top-width:3px; }
+  .frame b:nth-child(3) { left:0; bottom:0; border-left-width:3px; border-bottom-width:3px; }
+  .frame b:nth-child(4) { right:0; bottom:0; border-right-width:3px; border-bottom-width:3px; }
+  .rec { position:absolute; left:84px; top:262px; display:flex; align-items:center; gap:14px; color:#fff;
+    font-size:30px; font-weight:700; letter-spacing:.2em; text-shadow:0 1px 6px rgba(0,0,0,.4); }
+  .rec i { width:20px; height:20px; border-radius:50%; background:#E53935; display:block; }
+  .tc { position:absolute; right:84px; top:262px; color:#fff; font-size:30px; font-weight:500; letter-spacing:.06em;
+    font-variant-numeric:tabular-nums; text-shadow:0 1px 6px rgba(0,0,0,.4); }
+</style>
+</head>
+<body>
+<section class="s" id="s"><div class="grad"></div><div class="tgrad" id="tg"></div><div class="hook" id="hook"></div><div class="cap" id="cap"></div><div class="recw" id="rec"></div></section>
+<script>
+// Слова и время (с) из распознавания речи готового ролика; * = акцент (медь)
+const G = [
+  [[0.75,'Это'],[1.25,'что'],[1.49,'ещё'],[1.73,'такое?']],
+  [[2.35,'Тише,'],[2.89,'тише.']],
+  [[3.27,'Он'],[3.45,'закончил'],[3.95,'ремонт'],[4.31,'двухкомнатной'],[4.75,'квартиры']],
+  [[5.17,'*за'],[5.29,'*три'],[5.55,'*недели.']],
+  [[6.41,'Вы'],[6.89,'его'],[7.05,'покормили?']],
+  [[7.69,'Да.']],
+  [[8.35,'Напоили?']],
+  [[8.87,'Да.']],
+  [[9.19,'Плед'],[9.61,'принесите.']],
+  [[10.25,'Хорошо.']],
+];
+const LAST = [2.11, 3.19, 5.17, 6.17, 7.63, 7.85, 8.83, 8.99, 10.15, 10.51];
+const HOLD = [0, 0, -.3, .2, 0, .1, 0, .1, 0, 1.3];
+const ease = x => 1 - Math.pow(1 - x, 3);
+const clamp = (x, a = 0, b = 1) => Math.max(a, Math.min(b, x));
+const spring = x => x >= 1 ? 1 : 1 - Math.exp(-6 * x) * Math.cos(9 * x); // лёгкий перелёт и возврат
+
+window.render = (t) => {
+  // хук
+  const hook = document.getElementById('hook'), tg = document.getElementById('tg');
+  const h0 = 0, h1 = 2.2;
+  if (t < h1 + 0.25) {
+    const out = clamp((t - h1) / 0.25);
+    hook.style.opacity = 1 - out; hook.style.transform = `translateY(${-out * 20}px)`;
+    tg.style.opacity = 1 - out;
+    // хук виден целиком с первого кадра, чтобы тема ролика считывалась сразу
+    hook.innerHTML = `<div class="bar" style="width:80px"></div>
+      <div class="ln"><span>Ремонт двушки</span></div>
+      <div class="ln"><span>за <b>3 недели</b></span></div>`;
+  } else { hook.innerHTML = ''; tg.style.opacity = 0; }
+
+  // REC в ч/б финале (с 34.8 с, склейка на сцену со звонком)
+  const REC0 = 1e9, rec = document.getElementById('rec');
+  if (t >= REC0) {
+    const e = t - REC0, fr = Math.floor(e * 30) % 30, sec = 12 + Math.floor(e);
+    const tc = `23:47:${String(sec).padStart(2, '0')}:${String(fr).padStart(2, '0')}`;
+    rec.innerHTML = `<div class="frame"><b></b><b></b><b></b><b></b></div>
+      <div class="rec"><i style="opacity:${(e % 1) < 0.55 ? 1 : 0}"></i>REC</div><div class="tc">${tc}</div>`;
+  } else rec.innerHTML = '';
+
+  // субтитры
+  const cap = document.getElementById('cap'); cap.innerHTML = '';
+  for (let g = 0; g < G.length; g++) {
+    const st = G[g][0][0] - 0.06;
+    const next = g + 1 < G.length ? G[g + 1][0][0] - 0.06 : 1e9;
+    const en = Math.min(next, LAST[g] + 0.35 + HOLD[g]);
+    if (t < st || t >= en) continue;
+    const out = clamp((t - (en - 0.14)) / 0.14);
+    cap.style.opacity = 1 - out; cap.style.transform = `translateY(${-out * 14}px)`;
+    const parts = G[g].map(([wt, w0]) => {
+      const em = w0.startsWith('*'), w = em ? w0.slice(1) : w0;
+      const p = clamp((t - (wt - 0.04)) / (em ? 0.42 : 0.3));
+      const sp = spring(p), op = clamp(p * 3);
+      const y = (1 - sp) * 34, sc = (em ? 0.5 : 0.72) + (em ? 0.5 : 0.28) * sp;
+      const line = em ? `<i style="width:${ease(clamp((t - wt - 0.12) / 0.3)) * 100}%"></i>` : '';
+      return `<span class="w${em ? ' em' : ''}" style="opacity:${op};transform:translateY(${y}px) scale(${sc})">${w}${line}</span>`;
+    });
+    // акцентные слова подряд держим на одной строке
+    let html = '', run = '';
+    G[g].forEach(([, w0], i) => { if (w0.startsWith('*')) run += (run ? ' ' : '') + parts[i]; else { if (run) { html += `<span class="nb">${run}</span>`; run = ''; } html += parts[i]; } });
+    if (run) html += `<span class="nb">${run}</span>`;
+    cap.innerHTML = html;
+  }
+};
+window.render(0);
+</script>
+</body>
+</html>
