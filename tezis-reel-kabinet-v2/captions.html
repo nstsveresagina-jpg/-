@@ -22,9 +22,9 @@
   .w.em i { position:absolute; left:0; bottom:-.06em; height:.075em; background:var(--copper); border-radius:3px; }
   .hook { position:absolute; left:80px; right:80px; top:250px; color:#fff; text-shadow:0 0 22px rgba(0,0,0,.3); }
   .hook .k { font-size:28px; font-weight:500; letter-spacing:.34em; text-transform:uppercase; color:var(--copper-l); }
-  .hook .bar { height:3px; background:var(--copper); margin:18px 0 22px; }
+  .hook .bar { height:4px; background:var(--copper); margin:0 0 26px; }
   .hook .ln { overflow:hidden; }
-  .hook .ln span { display:block; font-size:86px; font-weight:800; line-height:1.0; letter-spacing:-.04em; text-transform:uppercase; }
+  .hook .ln span { display:block; font-size:100px; font-weight:800; line-height:1.0; letter-spacing:-.04em; text-transform:uppercase; }
   .hook .ln span b { color:var(--copper-l); font-weight:800; }
 </style>
 </head>
@@ -66,15 +66,12 @@ window.render = (t) => {
   const h0 = 0.15, h1 = 2.85;
   if (t < h1 + 0.25) {
     const out = clamp((t - h1) / 0.25);
-    const k = ease(clamp((t - h0) / 0.35));
-    const l1 = ease(clamp((t - h0 - 0.15) / 0.45)), l2 = ease(clamp((t - h0 - 0.38) / 0.45));
-    const bar = ease(clamp((t - h0 - 0.05) / 0.6));
     hook.style.opacity = 1 - out; hook.style.transform = `translateY(${-out * 20}px)`;
-    tg.style.opacity = (1 - out) * clamp((t - h0) / 0.3);
-    hook.innerHTML = `<div class="k" style="opacity:${k};letter-spacing:${0.6 - 0.26 * k}em">Совершенно секретно</div>
-      <div class="bar" style="width:${80 * bar}px"></div>
-      <div class="ln"><span style="transform:translateY(${(1 - l1) * 105}%)">Он на рыбалке.</span></div>
-      <div class="ln"><span style="transform:translateY(${(1 - l2) * 105}%)">У нас <b>пять дней</b></span></div>`;
+    tg.style.opacity = 1 - out;
+    // хук виден целиком с первого кадра, чтобы тема ролика считывалась сразу
+    hook.innerHTML = `<div class="bar" style="width:80px"></div>
+      <div class="ln"><span>Он на рыбалке.</span></div>
+      <div class="ln"><span>У нас <b>пять дней</b></span></div>`;
   } else { hook.innerHTML = ''; tg.style.opacity = 0; }
 
   // субтитры
