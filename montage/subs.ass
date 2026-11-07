@@ -3,23 +3,48 @@ ScriptType: v4.00+
 PlayResX: 1080
 PlayResY: 1920
 WrapStyle: 2
+ScaledBorderAndShadow: yes
 [V4+ Styles]
 Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
-Style: Main,Inter ExtraBold,84,&H00FFFFFF,&H00FFFFFF,&H00000000,&H90000000,-1,0,0,0,100,100,1,0,1,9,5,2,60,60,560,1
+Style: Y,Inter ExtraBold,100,&H00111111,&H00111111,&H0000E5FF,&H00000000,-1,0,0,0,100,100,2,0,3,16,0,5,0,0,0,1
+Style: P,Inter ExtraBold,100,&H00FFFFFF,&H00FFFFFF,&H00A020FF,&H00000000,-1,0,0,0,100,100,2,0,3,16,0,5,0,0,0,1
+Style: W,Inter ExtraBold,100,&H00FFFFFF,&H00FFFFFF,&H00000000,&H00A020FF,-1,0,0,0,100,100,2,0,1,9,9,5,0,0,0,1
+Style: K,Inter ExtraBold,100,&H0000E5FF,&H0000E5FF,&H00000000,&H00000000,-1,0,0,0,100,100,2,0,1,10,8,5,0,0,0,1
 [Events]
 Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
-Dialogue: 0,0:00:00.12,0:00:01.50,Main,,0,0,0,,{\fscx130\fscy130\t(0,140,\fscx100\fscy100)}СЕГОДНЯ {\c&H00E5FF&}ВЕЧЕР ПЯТНИЦА{\c&HFFFFFF&},
-Dialogue: 0,0:00:01.50,0:00:02.55,Main,,0,0,0,,{\fscx130\fscy130\t(0,140,\fscx100\fscy100)}И НАМ СТАЛО {\c&H00E5FF&}СКУЧНО
-Dialogue: 0,0:00:02.55,0:00:03.25,Main,,0,0,0,,{\fscx130\fscy130\t(0,140,\fscx100\fscy100)}ПОЭТОМУ МЫ ПРИШЛИ
-Dialogue: 0,0:00:03.25,0:00:04.18,Main,,0,0,0,,{\fscx130\fscy130\t(0,140,\fscx100\fscy100)}В {\c&H00E5FF&}GOOD NIGHT SHOW!
-Dialogue: 0,0:00:08.50,0:00:10.30,Main,,0,0,0,,{\fscx130\fscy130\t(0,140,\fscx100\fscy100)}КАКИЕ {\c&H00E5FF&}СЕРЬЁЗНЫЕ{\c&HFFFFFF&}\NДВИЖЕНИЯ!
-Dialogue: 0,0:00:10.30,0:00:11.00,Main,,0,0,0,,{\fscx130\fscy130\t(0,140,\fscx100\fscy100)}ПОДНИМАЙ {\c&H00E5FF&}НОГУ!
-Dialogue: 0,0:00:12.50,0:00:13.15,Main,,0,0,0,,{\fscx130\fscy130\t(0,140,\fscx100\fscy100)}{\c&H00E5FF&}ТАКСИ!
-Dialogue: 0,0:00:13.15,0:00:14.35,Main,,0,0,0,,{\fscx130\fscy130\t(0,140,\fscx100\fscy100)}АБСОЛЮТНО {\c&H00E5FF&}ВЕРНО!
-Dialogue: 0,0:00:16.48,0:00:17.30,Main,,0,0,0,,{\fscx130\fscy130\t(0,140,\fscx100\fscy100)}{\c&H00E5FF&}ОН НАШ!
-Dialogue: 0,0:00:17.30,0:00:18.35,Main,,0,0,0,,{\fscx130\fscy130\t(0,140,\fscx100\fscy100)}МЫ ЗАБРАЛИ,
-Dialogue: 0,0:00:18.35,0:00:19.13,Main,,0,0,0,,{\fscx130\fscy130\t(0,140,\fscx100\fscy100)}{\c&H00E5FF&}ОН НАШ!
-Dialogue: 0,0:00:19.60,0:00:21.24,Main,,0,0,0,,{\fscx130\fscy130\t(0,140,\fscx100\fscy100)}НЯ-НЯ-НЯ-НЯ-НЯ
-Dialogue: 0,0:00:25.75,0:00:26.20,Main,,0,0,0,,{\fscx130\fscy130\t(0,140,\fscx100\fscy100)}{\c&H00E5FF&}ВСЁ!
-Dialogue: 0,0:00:26.20,0:00:27.20,Main,,0,0,0,,{\fscx130\fscy130\t(0,140,\fscx100\fscy100)}ЭТО БЫЛО {\c&H00E5FF&}КЛАССНО!
-Dialogue: 0,0:00:27.20,0:00:28.60,Main,,0,0,0,,{\fscx130\fscy130\t(0,140,\fscx100\fscy100)}ОТЛИЧНО, {\c&H00E5FF&}ДРУЗЬЯ!
+Dialogue: 1,0:00:00.17,0:00:01.52,W,,0,0,0,,{\pos(540,1330)\fs96\frz-5\fscx0\fscy0\t(0,90,\fscx128\fscy128)\t(90,190,\fscx100\fscy100)\t(1220,1350,\fscx0\fscy0\alpha&HFF&)}СЕГОДНЯ
+Dialogue: 1,0:00:00.45,0:00:01.52,Y,,0,0,0,,{\pos(540,1482)\fs110\frz4\fscx0\fscy0\t(0,90,\fscx128\fscy128)\t(90,190,\fscx100\fscy100)\t(940,1070,\fscx0\fscy0\alpha&HFF&)}ВЕЧЕР
+Dialogue: 1,0:00:00.97,0:00:01.52,P,,0,0,0,,{\pos(540,1646)\fs120\frz-3\fscx0\fscy0\t(0,90,\fscx128\fscy128)\t(90,190,\fscx100\fscy100)\t(420,550,\fscx0\fscy0\alpha&HFF&)}ПЯТНИЦА!
+Dialogue: 1,0:00:01.55,0:00:02.56,W,,0,0,0,,{\pos(540,1380)\fs92\frz3\fscx0\fscy0\t(0,90,\fscx128\fscy128)\t(90,190,\fscx100\fscy100)\t(880,1010,\fscx0\fscy0\alpha&HFF&)}И НАМ СТАЛО
+Dialogue: 1,0:00:01.99,0:00:02.56,K,,0,0,0,,{\pos(540,1551)\fs150\frz-6\fscx0\fscy0\t(0,90,\fscx128\fscy128)\t(90,190,\fscx100\fscy100)\t(190,250,\frz1)\t(250,310,\frz-13)\t(310,370,\frz1)\t(370,430,\frz-13)\t(430,490,\frz1)\t(490,560,\frz-6)\t(440,570,\fscx0\fscy0\alpha&HFF&)}СКУЧНО...
+Dialogue: 1,0:00:02.59,0:00:03.26,W,,0,0,0,,{\pos(540,1380)\fs92\frz-4\fscx0\fscy0\t(0,90,\fscx128\fscy128)\t(90,190,\fscx100\fscy100)\t(539,669,\fscx0\fscy0\alpha&HFF&)}ПОЭТОМУ МЫ
+Dialogue: 1,0:00:03.03,0:00:03.26,Y,,0,0,0,,{\pos(540,1535)\fs120\frz5\fscx0\fscy0\t(0,90,\fscx128\fscy128)\t(90,190,\fscx100\fscy100)\t(200,229,\fscx0\fscy0\alpha&HFF&)}ПРИШЛИ
+Dialogue: 1,0:00:03.27,0:00:04.18,P,,0,0,0,,{\pos(540,1330)\fs110\frz-5\fscx0\fscy0\t(0,90,\fscx128\fscy128)\t(90,190,\fscx100\fscy100)\t(779,909,\fscx0\fscy0\alpha&HFF&)}В GOOD NIGHT
+Dialogue: 1,0:00:03.83,0:00:04.18,K,,0,0,0,,{\pos(540,1531)\fs190\frz4\fscx0\fscy0\t(0,90,\fscx128\fscy128)\t(90,190,\fscx100\fscy100)\t(190,250,\frz11)\t(250,310,\frz-3)\t(310,370,\frz11)\t(370,430,\frz-3)\t(430,490,\frz11)\t(490,560,\frz4)\t(219,349,\fscx0\fscy0\alpha&HFF&)}SHOW!
+Dialogue: 1,0:00:08.54,0:00:10.32,W,,0,0,0,,{\pos(540,420)\fs100\frz-6\fscx0\fscy0\t(0,90,\fscx128\fscy128)\t(90,190,\fscx100\fscy100)\t(1650,1780,\fscx0\fscy0\alpha&HFF&)}КАКИЕ
+Dialogue: 1,0:00:08.70,0:00:10.32,Y,,0,0,0,,{\pos(540,579)\fs120\frz3\fscx0\fscy0\t(0,90,\fscx128\fscy128)\t(90,190,\fscx100\fscy100)\t(1490,1620,\fscx0\fscy0\alpha&HFF&)}СЕРЬЁЗНЫЕ
+Dialogue: 1,0:00:09.26,0:00:10.32,P,,0,0,0,,{\pos(540,749)\fs120\frz-4\fscx0\fscy0\t(0,90,\fscx128\fscy128)\t(90,190,\fscx100\fscy100)\t(190,250,\frz3)\t(250,310,\frz-11)\t(310,370,\frz3)\t(370,430,\frz-11)\t(430,490,\frz3)\t(490,560,\frz-4)\t(930,1060,\fscx0\fscy0\alpha&HFF&)}ДВИЖЕНИЯ!
+Dialogue: 1,0:00:10.36,0:00:11.00,W,,0,0,0,,{\pos(540,480)\fs110\frz5\fscx0\fscy0\t(0,90,\fscx128\fscy128)\t(90,190,\fscx100\fscy100)\t(510,640,\fscx0\fscy0\alpha&HFF&)}ПОДНИМАЙ
+Dialogue: 1,0:00:10.76,0:00:11.00,K,,0,0,0,,{\pos(540,671)\fs170\frz-6\fscx0\fscy0\t(0,90,\fscx128\fscy128)\t(90,190,\fscx100\fscy100)\t(190,250,\frz1)\t(250,310,\frz-13)\t(310,370,\frz1)\t(370,430,\frz-13)\t(430,490,\frz1)\t(490,560,\frz-6)\t(200,240,\fscx0\fscy0\alpha&HFF&)}НОГУ!
+Dialogue: 1,0:00:12.57,0:00:13.19,Y,,0,0,0,,{\pos(540,1480)\fs150\frz-7\fscx0\fscy0\t(0,90,\fscx128\fscy128)\t(90,190,\fscx100\fscy100)\t(190,250,\frz0)\t(250,310,\frz-14)\t(310,370,\frz0)\t(370,430,\frz-14)\t(430,490,\frz0)\t(490,560,\frz-7)\t(489,619,\fscx0\fscy0\alpha&HFF&)}ТАКСИ?!
+Dialogue: 1,0:00:13.21,0:00:14.35,W,,0,0,0,,{\pos(540,1420)\fs110\frz4\fscx0\fscy0\t(0,90,\fscx128\fscy128)\t(90,190,\fscx100\fscy100)\t(1009,1139,\fscx0\fscy0\alpha&HFF&)}АБСОЛЮТНО
+Dialogue: 1,0:00:13.81,0:00:14.35,K,,0,0,0,,{\pos(540,1611)\fs170\frz-5\fscx0\fscy0\t(0,90,\fscx128\fscy128)\t(90,190,\fscx100\fscy100)\t(190,250,\frz2)\t(250,310,\frz-12)\t(310,370,\frz2)\t(370,430,\frz-12)\t(430,490,\frz2)\t(490,560,\frz-5)\t(409,539,\fscx0\fscy0\alpha&HFF&)}ВЕРНО!
+Dialogue: 1,0:00:16.48,0:00:17.32,Y,,0,0,0,,{\pos(540,470)\fs150\frz-6\fscx0\fscy0\t(0,90,\fscx128\fscy128)\t(90,190,\fscx100\fscy100)\t(190,250,\frz1)\t(250,310,\frz-13)\t(310,370,\frz1)\t(370,430,\frz-13)\t(430,490,\frz1)\t(490,560,\frz-6)\t(709,839,\fscx0\fscy0\alpha&HFF&)}ОН НАШ!
+Dialogue: 1,0:00:17.34,0:00:18.36,W,,0,0,0,,{\pos(540,430)\fs110\frz5\fscx0\fscy0\t(0,90,\fscx128\fscy128)\t(90,190,\fscx100\fscy100)\t(889,1019,\fscx0\fscy0\alpha&HFF&)}МЫ
+Dialogue: 1,0:00:17.60,0:00:18.36,P,,0,0,0,,{\pos(540,600)\fs130\frz-4\fscx0\fscy0\t(0,90,\fscx128\fscy128)\t(90,190,\fscx100\fscy100)\t(629,759,\fscx0\fscy0\alpha&HFF&)}ЗАБРАЛИ!
+Dialogue: 1,0:00:18.38,0:00:19.13,W,,0,0,0,,{\pos(540,400)\fs120\frz-5\fscx0\fscy0\t(0,90,\fscx128\fscy128)\t(90,190,\fscx100\fscy100)\t(620,750,\fscx0\fscy0\alpha&HFF&)}ОН
+Dialogue: 1,0:00:18.55,0:00:19.13,K,,0,0,0,,{\pos(540,612)\fs200\frz6\fscx0\fscy0\t(0,90,\fscx128\fscy128)\t(90,190,\fscx100\fscy100)\t(190,250,\frz13)\t(250,310,\frz-1)\t(310,370,\frz13)\t(370,430,\frz-1)\t(430,490,\frz13)\t(490,560,\frz6)\t(449,579,\fscx0\fscy0\alpha&HFF&)}НАШ!!!
+Dialogue: 1,0:00:19.55,0:00:21.24,Y,,0,0,0,,{\pos(250,420)\fs130\frz-9\fscx0\fscy0\t(0,90,\fscx128\fscy128)\t(90,190,\fscx100\fscy100)\t(190,250,\frz-2)\t(250,310,\frz-16)\t(310,370,\frz-2)\t(370,430,\frz-16)\t(430,490,\frz-2)\t(490,560,\frz-9)\t(1559,1689,\fscx0\fscy0\alpha&HFF&)}НЯ!
+Dialogue: 1,0:00:19.99,0:00:21.24,P,,0,0,0,,{\pos(800,560)\fs130\frz-15\fscx0\fscy0\t(0,90,\fscx128\fscy128)\t(90,190,\fscx100\fscy100)\t(190,250,\frz-8)\t(250,310,\frz-22)\t(310,370,\frz-8)\t(370,430,\frz-22)\t(430,490,\frz-8)\t(490,560,\frz-15)\t(1120,1250,\fscx0\fscy0\alpha&HFF&)}НЯ!
+Dialogue: 1,0:00:20.33,0:00:21.24,K,,0,0,0,,{\pos(330,1500)\fs110\frz16\fscx0\fscy0\t(0,90,\fscx128\fscy128)\t(90,190,\fscx100\fscy100)\t(190,250,\frz23)\t(250,310,\frz9)\t(310,370,\frz23)\t(370,430,\frz9)\t(430,490,\frz23)\t(490,560,\frz16)\t(780,910,\fscx0\fscy0\alpha&HFF&)}НЯ!
+Dialogue: 1,0:00:20.60,0:00:21.24,W,,0,0,0,,{\pos(780,1320)\fs110\frz5\fscx0\fscy0\t(0,90,\fscx128\fscy128)\t(90,190,\fscx100\fscy100)\t(190,250,\frz12)\t(250,310,\frz-2)\t(310,370,\frz12)\t(370,430,\frz-2)\t(430,490,\frz12)\t(490,560,\frz5)\t(509,639,\fscx0\fscy0\alpha&HFF&)}НЯ!
+Dialogue: 1,0:00:20.80,0:00:21.24,Y,,0,0,0,,{\pos(540,300)\fs150\frz-15\fscx0\fscy0\t(0,90,\fscx128\fscy128)\t(90,190,\fscx100\fscy100)\t(190,250,\frz-8)\t(250,310,\frz-22)\t(310,370,\frz-8)\t(370,430,\frz-22)\t(430,490,\frz-8)\t(490,560,\frz-15)\t(309,439,\fscx0\fscy0\alpha&HFF&)}НЯ!
+Dialogue: 1,0:00:20.98,0:00:21.24,P,,0,0,0,,{\pos(230,960)\fs150\frz-5\fscx0\fscy0\t(0,90,\fscx128\fscy128)\t(90,190,\fscx100\fscy100)\t(190,250,\frz2)\t(250,310,\frz-12)\t(310,370,\frz2)\t(370,430,\frz-12)\t(430,490,\frz2)\t(490,560,\frz-5)\t(200,259,\fscx0\fscy0\alpha&HFF&)}НЯ!
+Dialogue: 1,0:00:21.12,0:00:21.24,K,,0,0,0,,{\pos(850,1000)\fs110\frz-13\fscx0\fscy0\t(0,90,\fscx128\fscy128)\t(90,190,\fscx100\fscy100)\t(190,250,\frz-6)\t(250,310,\frz-20)\t(310,370,\frz-6)\t(370,430,\frz-20)\t(430,490,\frz-6)\t(490,560,\frz-13)\t(200,119,\fscx0\fscy0\alpha&HFF&)}НЯ!
+Dialogue: 1,0:00:25.78,0:00:26.20,K,,0,0,0,,{\pos(540,1400)\fs190\frz-6\fscx0\fscy0\t(0,90,\fscx128\fscy128)\t(90,190,\fscx100\fscy100)\t(190,250,\frz1)\t(250,310,\frz-13)\t(310,370,\frz1)\t(370,430,\frz-13)\t(430,490,\frz1)\t(490,560,\frz-6)\t(289,419,\fscx0\fscy0\alpha&HFF&)}ВСЁ!
+Dialogue: 1,0:00:26.20,0:00:27.20,W,,0,0,0,,{\pos(540,1350)\fs110\frz4\fscx0\fscy0\t(0,90,\fscx128\fscy128)\t(90,190,\fscx100\fscy100)\t(870,1000,\fscx0\fscy0\alpha&HFF&)}ЭТО БЫЛО
+Dialogue: 1,0:00:26.76,0:00:27.20,Y,,0,0,0,,{\pos(540,1525)\fs140\frz-5\fscx0\fscy0\t(0,90,\fscx128\fscy128)\t(90,190,\fscx100\fscy100)\t(190,250,\frz2)\t(250,310,\frz-12)\t(310,370,\frz2)\t(370,430,\frz-12)\t(430,490,\frz2)\t(490,560,\frz-5)\t(309,439,\fscx0\fscy0\alpha&HFF&)}КЛАССНО!
+Dialogue: 1,0:00:27.20,0:00:28.50,W,,0,0,0,,{\pos(540,470)\fs110\frz-4\fscx0\fscy0\t(0,90,\fscx128\fscy128)\t(90,190,\fscx100\fscy100)\t(1170,1300,\fscx0\fscy0\alpha&HFF&)}ОТЛИЧНО,
+Dialogue: 1,0:00:27.96,0:00:28.50,P,,0,0,0,,{\pos(540,645)\fs140\frz5\fscx0\fscy0\t(0,90,\fscx128\fscy128)\t(90,190,\fscx100\fscy100)\t(190,250,\frz12)\t(250,310,\frz-2)\t(310,370,\frz12)\t(370,430,\frz-2)\t(430,490,\frz12)\t(490,560,\frz5)\t(409,539,\fscx0\fscy0\alpha&HFF&)}ДРУЗЬЯ!
+Dialogue: 1,0:00:28.55,0:00:30.00,W,,0,0,0,,{\pos(540,1380)\fs120\frz-4\fscx0\fscy0\t(0,90,\fscx128\fscy128)\t(90,190,\fscx100\fscy100)\t(1319,1449,\fscx0\fscy0\alpha&HFF&)}ВСЁ БУДЕТ
+Dialogue: 1,0:00:28.80,0:00:30.00,Y,,0,0,0,,{\pos(540,1576)\fs170\frz3\fscx0\fscy0\t(0,90,\fscx128\fscy128)\t(90,190,\fscx100\fscy100)\t(190,250,\frz10)\t(250,310,\frz-4)\t(310,370,\frz10)\t(370,430,\frz-4)\t(430,490,\frz10)\t(490,560,\frz3)\t(1069,1199,\fscx0\fscy0\alpha&HFF&)}ХОРОШО!
