@@ -67,21 +67,21 @@ class Retoucher:
             # сила: тёмные волосы над лбом -> героиня в чёрном, ей ретушь сильнее
             fx, fy = int(p[10][0]), int(max(0, p[10][1] - fw * 0.18))
             hair = roi[max(0, fy - 6):fy + 6, max(0, fx - 20):fx + 20].mean() if fy > 6 else 128
-            s = strength if strength is not None else (0.78 if hair < 75 else 0.6)
+            s = strength if strength is not None else (0.5 if hair < 75 else 0.32)
             # частотное разделение: убираем неровности средней частоты, мелкую текстуру возвращаем
             u8 = np.clip(roi, 0, 255).astype(np.uint8)
             d = max(5, int(fw * 0.035))
             smooth = cv2.bilateralFilter(u8, d * 2 + 1, 22, d).astype(np.float32)
             smooth = cv2.bilateralFilter(smooth.astype(np.uint8), d + 1, 16, d).astype(np.float32)
             fine = roi - cv2.GaussianBlur(roi, (0, 0), max(0.8, fw / 420))
-            soft = smooth + fine * 0.55
+            soft = smooth + fine * 0.8
             # чуть осветляем зону под глазами (тени), очень мягко
             ue = np.zeros_like(m)
             for idx in (UNDER_L[0], UNDER_R[0]):
                 self.poly(ue, p, idx, 1.0, 1.0)
             ue = cv2.GaussianBlur(ue, (k * 4 + 1, k * 4 + 1), 0) * m
             lum = cv2.GaussianBlur(roi.mean(2), (0, 0), fw / 30)
-            soft += (ue * np.clip(lum.mean() - lum, 0, 40) * 0.35)[..., None]
+            soft += (ue * np.clip(lum.mean() - lum, 0, 40) * 0.2)[..., None]
             a = (m * s)[..., None]
             roi[:] = roi * (1 - a) + soft * a
         return np.clip(out, 0, 255).astype(np.uint8)

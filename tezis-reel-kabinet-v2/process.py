@@ -5,7 +5,7 @@ from shots import shot_gains, gains_at
 src, model, out = sys.argv[1:4]
 W, H, FPS = 1080, 1920, 30
 dur = float(subprocess.run(['ffprobe', '-v', 'error', '-show_entries', 'format=duration', '-of', 'csv=p=0', src], capture_output=True, text=True).stdout)
-gains = shot_gains(src, dur); lut = make_grade(); rt = Retoucher(model)
+rt = Retoucher(model)
 dec = subprocess.Popen(['ffmpeg', '-v', 'error', '-i', src, '-f', 'rawvideo', '-pix_fmt', 'rgb24', '-'], stdout=subprocess.PIPE)
 enc = subprocess.Popen(['ffmpeg', '-v', 'error', '-y', '-f', 'rawvideo', '-pix_fmt', 'rgb24', '-s', f'{W}x{H}', '-r', str(FPS), '-i', '-',
                         '-c:v', 'libx264', '-crf', '12', '-preset', 'medium', '-pix_fmt', 'yuv420p', out], stdin=subprocess.PIPE)
@@ -15,7 +15,7 @@ while True:
     if len(buf) < W * H * 3: break
     f = np.frombuffer(buf, np.uint8).reshape(H, W, 3)
     t = n / FPS
-    g = apply_grade(f, lut, gains_at(gains, t))
+    g = f.copy()  # без фильтра: цвет как в исходнике
     enc.stdin.write(rt.retouch(g, int(t * 1000)).tobytes())
     n += 1
     if n % 150 == 0: print(n, flush=True)

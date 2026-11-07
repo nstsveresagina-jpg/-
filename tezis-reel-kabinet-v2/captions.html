@@ -26,10 +26,23 @@
   .hook .ln { overflow:hidden; }
   .hook .ln span { display:block; font-size:100px; font-weight:800; line-height:1.0; letter-spacing:-.04em; text-transform:uppercase; }
   .hook .ln span b { color:var(--copper-l); font-weight:800; }
+  /* ч/б финал по сценарию: рамка камеры, REC и таймкод */
+  .recw { position:absolute; inset:0; }
+  .frame { position:absolute; left:48px; right:48px; top:230px; bottom:330px; }
+  .frame b { position:absolute; width:56px; height:56px; border:0 solid rgba(255,255,255,.85); }
+  .frame b:nth-child(1) { left:0; top:0; border-left-width:3px; border-top-width:3px; }
+  .frame b:nth-child(2) { right:0; top:0; border-right-width:3px; border-top-width:3px; }
+  .frame b:nth-child(3) { left:0; bottom:0; border-left-width:3px; border-bottom-width:3px; }
+  .frame b:nth-child(4) { right:0; bottom:0; border-right-width:3px; border-bottom-width:3px; }
+  .rec { position:absolute; left:84px; top:262px; display:flex; align-items:center; gap:14px; color:#fff;
+    font-size:30px; font-weight:700; letter-spacing:.2em; text-shadow:0 1px 6px rgba(0,0,0,.4); }
+  .rec i { width:20px; height:20px; border-radius:50%; background:#E53935; display:block; }
+  .tc { position:absolute; right:84px; top:262px; color:#fff; font-size:30px; font-weight:500; letter-spacing:.06em;
+    font-variant-numeric:tabular-nums; text-shadow:0 1px 6px rgba(0,0,0,.4); }
 </style>
 </head>
 <body>
-<section class="s" id="s"><div class="grad"></div><div class="tgrad" id="tg"></div><div class="hook" id="hook"></div><div class="cap" id="cap"></div></section>
+<section class="s" id="s"><div class="grad"></div><div class="tgrad" id="tg"></div><div class="hook" id="hook"></div><div class="cap" id="cap"></div><div class="recw" id="rec"></div></section>
 <script>
 // Слова и время (с) из распознавания речи готового ролика; * = акцент (медь)
 const G = [
@@ -73,6 +86,15 @@ window.render = (t) => {
       <div class="ln"><span>Он на рыбалке.</span></div>
       <div class="ln"><span>У нас <b>пять дней</b></span></div>`;
   } else { hook.innerHTML = ''; tg.style.opacity = 0; }
+
+  // REC в ч/б финале (с 34.8 с, склейка на сцену со звонком)
+  const REC0 = 34.8, rec = document.getElementById('rec');
+  if (t >= REC0) {
+    const e = t - REC0, fr = Math.floor(e * 30) % 30, sec = 12 + Math.floor(e);
+    const tc = `23:47:${String(sec).padStart(2, '0')}:${String(fr).padStart(2, '0')}`;
+    rec.innerHTML = `<div class="frame"><b></b><b></b><b></b><b></b></div>
+      <div class="rec"><i style="opacity:${(e % 1) < 0.55 ? 1 : 0}"></i>REC</div><div class="tc">${tc}</div>`;
+  } else rec.innerHTML = '';
 
   // субтитры
   const cap = document.getElementById('cap'); cap.innerHTML = '';
