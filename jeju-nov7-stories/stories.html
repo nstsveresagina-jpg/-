@@ -4,6 +4,8 @@
 :root{--cream:#FBF6EC;--navy:#1E2B3C;--o:#F7A520;--red:#E8572A}
 *{margin:0;padding:0;box-sizing:border-box}
 body{background:#888}
+/* режим оверлея для видео-сторис: без фона и фото, только карточка, логотип и полароид */
+body.ov{background:transparent} body.ov .s{background:transparent;margin:0} body.ov .ph{display:none}
 /* 1080×1920 по шаблону korea-reviews-stories; верх 250 px и низ 300 px заняты интерфейсом сторис */
 .s{width:1080px;height:1920px;position:relative;overflow:hidden;background:var(--cream);color:var(--navy);margin:0 auto 30px}
 .a{position:absolute}
