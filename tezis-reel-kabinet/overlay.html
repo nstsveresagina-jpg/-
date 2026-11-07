@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<title>TEZIS Reel Overlay</title>
+<style>
+  @font-face { font-family:"Onest"; src:url(fonts/Onest-400.ttf); font-weight:400; }
+  @font-face { font-family:"Onest"; src:url(fonts/Onest-500.ttf); font-weight:500; }
+  @font-face { font-family:"Onest"; src:url(fonts/Onest-600.ttf); font-weight:600; }
+  @font-face { font-family:"Onest"; src:url(fonts/Onest-700.ttf); font-weight:700; }
+  :root { --copper:#C49A72; --ink:#1E1814; }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html, body { background:transparent; }
+  .s { width:1080px; height:1920px; position:relative; overflow:hidden; font-family:"Onest",sans-serif; }
+  /* субтитры: нижняя треть, выше подписи Instagram */
+  .cap { position:absolute; left:90px; right:90px; top:1330px; text-align:center; color:#fff;
+    font-size:54px; font-weight:600; line-height:1.18; letter-spacing:-.012em;
+    text-shadow:0 0 28px rgba(0,0,0,.55), 0 2px 8px rgba(0,0,0,.45); }
+  .cap c { color:#E2BC94; }
+  .grad { position:absolute; left:0; right:0; bottom:0; height:900px; background:linear-gradient(rgba(20,15,12,0) 0, rgba(20,15,12,.30) 45%, rgba(20,15,12,.42) 100%); }
+  .tgrad { position:absolute; left:0; right:0; top:0; height:900px; background:linear-gradient(rgba(20,15,12,.38) 0, rgba(20,15,12,.24) 55%, rgba(20,15,12,0) 100%); }
+  /* хук на светлой стене в начале */
+  .hook { position:absolute; left:80px; right:80px; top:300px; color:#fff; text-shadow:0 0 24px rgba(0,0,0,.35); }
+  .hook .k { font-size:24px; font-weight:500; letter-spacing:.34em; text-transform:uppercase; color:var(--copper); }
+  .hook .bar { width:80px; height:3px; background:var(--copper); margin:20px 0 24px; }
+  .hook h1 { font-size:84px; font-weight:700; line-height:.98; letter-spacing:-.04em; text-transform:uppercase; }
+  .hook h1 c { color:#E2BC94; }
+  /* REC в ч/б финале */
+  .rec { position:absolute; left:64px; top:260px; display:flex; align-items:center; gap:16px; color:#fff;
+    font-size:30px; font-weight:600; letter-spacing:.2em; text-shadow:0 1px 6px rgba(0,0,0,.4); }
+  .rec i { width:22px; height:22px; border-radius:50%; background:#E53935; display:block; }
+  .frame { position:absolute; left:48px; right:48px; top:230px; bottom:330px; }
+  .frame b { position:absolute; width:56px; height:56px; border:0 solid rgba(255,255,255,.85); }
+  .frame b:nth-child(1) { left:0; top:0; border-left-width:3px; border-top-width:3px; }
+  .frame b:nth-child(2) { right:0; top:0; border-right-width:3px; border-top-width:3px; }
+  .frame b:nth-child(3) { left:0; bottom:0; border-left-width:3px; border-bottom-width:3px; }
+  .frame b:nth-child(4) { right:0; bottom:0; border-right-width:3px; border-bottom-width:3px; }
+  /* финальная плашка: логотип и смысл ролика */
+  .outro { position:absolute; left:80px; right:80px; top:1290px; color:#fff; text-shadow:0 0 24px rgba(0,0,0,.5); }
+  .outro img { height:40px; display:block; margin-bottom:28px; filter:drop-shadow(0 0 12px rgba(0,0,0,.4)); }
+  .outro h2 { font-size:58px; font-weight:700; line-height:1.02; letter-spacing:-.03em; text-transform:uppercase; }
+  .outro p { margin-top:18px; font-size:32px; font-weight:400; color:rgba(255,255,255,.9); }
+  .outro .bar { width:80px; height:3px; background:var(--copper); margin:0 0 24px; }
+</style>
+</head>
+<body>
+<section class="s" id="s"></section>
+<script>
+// build.py вызывает window.show({...}) и делает скриншот с прозрачным фоном
+window.show = (o) => {
+  const s = document.getElementById('s');
+  if (o.cap) s.innerHTML = `<div class="cap">${o.cap}</div>`;
+  if (o.hook) s.innerHTML = `<div class="tgrad"></div><div class="hook"><div class="k">${o.hook[0]}</div><div class="bar"></div><h1>${o.hook[1]}</h1></div>`;
+  if (o.grad) s.innerHTML = `<div class="grad"></div>`;
+  if (o.rec) s.innerHTML = `<div class="frame"><b></b><b></b><b></b><b></b></div><div class="rec"><i></i>REC</div>`;
+  if (o.recoff) s.innerHTML = `<div class="frame"><b></b><b></b><b></b><b></b></div><div class="rec"><i style="background:transparent"></i>REC</div>`;
+  if (o.outro) s.innerHTML = `<div class="outro"><img src="logo_light.png"><div class="bar"></div><h2>${o.outro[0]}</h2><p>${o.outro[1]}</p></div>`;
+};
+</script>
+</body>
+</html>
