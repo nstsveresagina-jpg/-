@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<title>TEZIS Stories Priroda</title>
+<style>
+  @font-face { font-family:"Onest"; src:url(fonts/Onest-500.ttf); font-weight:500; }
+  @font-face { font-family:"Onest"; src:url(fonts/Onest-700.ttf); font-weight:700; }
+  @font-face { font-family:"Onest"; src:url(fonts/Onest-800.ttf); font-weight:800; }
+  :root { --copper:#C49A72; --copper-l:#E2BC94; --ink:#1E1814; --milk:#F5F1EA; }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { background:#777; }
+  /* сторис 1080x1920; верх и низ по 250px без важного текста (интерфейс Instagram) */
+  .s { width:1080px; height:1920px; position:relative; overflow:hidden; font-family:"Onest",sans-serif; color:#fff; background:var(--milk); margin-bottom:20px; }
+  .ph { position:absolute; left:0; right:0; background-size:cover; background-position:center; }
+  .top { top:0; height:930px; }
+  .bot { top:946px; bottom:0; }
+  .tg { position:absolute; left:0; right:0; top:0; height:520px; background:linear-gradient(rgba(15,10,8,.5), rgba(15,10,8,0)); }
+  .mg { position:absolute; left:0; right:0; top:560px; height:370px; background:linear-gradient(rgba(15,10,8,0), rgba(15,10,8,.55)); }
+  .bg { position:absolute; left:0; right:0; bottom:0; height:640px; background:linear-gradient(rgba(15,10,8,0), rgba(15,10,8,.6)); }
+  .head { position:absolute; left:64px; right:64px; top:250px; display:flex; align-items:center; gap:26px; }
+  .head img { height:36px; display:block; }
+  .head i { flex:1; height:1.5px; background:rgba(255,255,255,.45); }
+  .head b { font-size:24px; font-weight:500; letter-spacing:.2em; color:rgba(255,255,255,.85); }
+  .p1 { position:absolute; left:64px; right:64px; top:690px; font-size:62px; font-weight:800; line-height:1.02; letter-spacing:-.03em; text-transform:uppercase; text-shadow:0 2px 18px rgba(0,0,0,.35); }
+  .p2 { position:absolute; left:64px; right:64px; top:1500px; font-size:74px; font-weight:800; line-height:1; letter-spacing:-.03em; text-transform:uppercase; text-shadow:0 2px 18px rgba(0,0,0,.35); }
+  .p2 span, .p1 span { color:var(--copper-l); }
+  .pill { position:absolute; left:50%; top:938px; transform:translate(-50%,-50%); display:flex; align-items:center; gap:22px; padding:18px 30px 18px 22px;
+    border-radius:999px; background:var(--milk); color:var(--ink); box-shadow:0 14px 40px rgba(0,0,0,.3); white-space:nowrap; }
+  .pill i { width:54px; height:54px; border-radius:50%; display:block; border:3px solid #fff; margin-right:-34px; box-shadow:0 2px 6px rgba(0,0,0,.2); }
+  .pill i:last-of-type { margin-right:0; }
+  .pill b { font-size:36px; font-weight:800; letter-spacing:-.01em; margin-left:6px; }
+  /* обложка */
+  .c .ph { inset:0; }
+  .c .cover-g { position:absolute; left:0; right:0; top:0; height:1100px; background:linear-gradient(rgba(25,15,10,.72), rgba(25,15,10,.45) 60%, rgba(25,15,10,0)); }
+  .c .t { position:absolute; left:64px; right:64px; top:350px; }
+  .c .bar { width:84px; height:3px; background:var(--copper); margin-bottom:26px; }
+  .c h1 { font-size:110px; font-weight:800; line-height:.95; letter-spacing:-.04em; text-transform:uppercase; }
+  .c h1 span { color:var(--copper-l); }
+  .c .sub { margin-top:26px; font-size:36px; font-weight:500; color:rgba(255,255,255,.9); }
+  .c .more { position:absolute; left:64px; top:1580px; padding:18px 32px; border-radius:999px; background:var(--milk); color:var(--ink); font-size:32px; font-weight:800; }
+  /* финал */
+  .f { background:var(--ink); }
+  .f .head i { background:rgba(255,255,255,.3); }
+  .f .t { position:absolute; left:64px; right:64px; top:470px; }
+  .f .bar { width:84px; height:3px; background:var(--copper); margin-bottom:26px; }
+  .f h1 { font-size:92px; font-weight:800; line-height:.98; letter-spacing:-.035em; text-transform:uppercase; }
+  .f h1 span { color:var(--copper); }
+  .f .sub { margin-top:30px; font-size:36px; line-height:1.35; color:rgba(255,255,255,.82); }
+  .f .strip { position:absolute; left:64px; right:64px; top:1010px; height:150px; border-radius:22px; background-size:cover; background-position:center 30%; }
+  .f .cta { position:absolute; left:64px; right:64px; top:1200px; border:2px solid var(--copper); border-radius:30px; padding:38px 46px; }
+  .f .cta p { font-size:34px; line-height:1.3; color:rgba(255,255,255,.85); }
+  .f .cta strong { display:block; font-size:92px; font-weight:800; letter-spacing:-.02em; color:var(--copper); margin:8px 0 6px; }
+  .f .addr { position:absolute; left:64px; top:1600px; font-size:26px; color:rgba(255,255,255,.6); }
+</style>
+</head>
+<body>
+<div id="root"></div>
+<script>
+const P = [
+  ['Слива + сливки', ['#5B1E4F', '#8E4C7E', '#EFE3D3', '#B8A79C']],
+  ['Вишня + орех', ['#6B0F17', '#3A1512', '#8A5A44', '#C2B4A5']],
+  ['Лёд + графит', ['#A9C1D6', '#5C7D9B', '#1F3448', '#8E959C']],
+  ['Терракота + чёрный', ['#C8682A', '#1E1C1A', '#EFE6D8', '#8D694F']],
+  ['Ежевика + шалфей', ['#6E4A66', '#9AA383', '#4A3A3F', '#C9BFAE']],
+  ['Пудра + орех', ['#E7B9B4', '#C27482', '#4E2E22', '#F2EADF']],
+];
+const N = P.length + 2, pad = n => String(n).padStart(2, '0');
+const head = (n, logo) => `<div class="head"><img src="src/${logo}.png" alt="TEZIS"><i></i><b>${pad(n)} / ${pad(N)}</b></div>`;
+let h = `<section class="s c"><div class="ph" style="background-image:url(src/fabrics.jpg)"></div><div class="cover-g"></div>${head(1, 'logo_light')}
+  <div class="t"><div class="bar"></div><h1>Природа<br>не ошибается<br><span>в цвете</span></h1>
+  <div class="sub">6 сочетаний, которые можно смело переносить в интерьер</div></div>
+  <div class="more">Листайте →</div></section>`;
+P.forEach(([name, cols], i) => {
+  h += `<section class="s">
+    <div class="ph top" style="background-image:url(src/n_${i + 1}.jpg)"></div>
+    <div class="ph bot" style="background-image:url(src/r_${i + 1}.jpg)"></div>
+    <div class="tg"></div><div class="mg"></div><div class="bg"></div>${head(i + 2, 'logo_light')}
+    <div class="p1">Если природа говорит,<br>что <span>сочетается</span></div>
+    <div class="p2">значит,<br><span>сочетается</span></div>
+    <div class="pill">${cols.map(c => `<i style="background:${c}"></i>`).join('')}<b>${name}</b></div>
+  </section>`;
+});
+h += `<section class="s f">${head(N, 'logo_light')}
+  <div class="t"><div class="bar"></div><h1>Хотите такую<br><span>палитру</span> у себя?</h1>
+  <div class="sub">Подберём сочетание под ваш свет, мебель и метраж и посчитаем ремонт.</div></div>
+  <div class="strip" style="background-image:url(src/fabrics.jpg)"></div>
+  <div class="cta"><p>Напишите нам в директ</p><strong>«ПАЛИТРА»</strong><p>и площадь вашей квартиры или дома</p></div>
+  <div class="addr">TEZIS · Тюмень, ул. Газовиков, 40</div></section>`;
+document.getElementById('root').innerHTML = h;
+const urls = [...h.matchAll(/url\(([^)]+)\)/g)].map(m => m[1]);
+Promise.all(urls.map(u => new Promise(r => { const im = new Image(); im.onload = im.onerror = r; im.src = u; }))).then(() => { window.READY = true; });
+</script>
+</body>
+</html>
