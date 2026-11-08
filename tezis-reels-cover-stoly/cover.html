@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<title>TEZIS Reels Cover Stoly</title>
+<style>
+  @font-face { font-family:"Onest"; src:url(fonts/Onest-500.ttf); font-weight:500; }
+  @font-face { font-family:"Onest"; src:url(fonts/Onest-700.ttf); font-weight:700; }
+  @font-face { font-family:"Onest"; src:url(fonts/Onest-800.ttf); font-weight:800; }
+  :root { --copper:#C49A72; --ink:#1E1814; --milk:#F5F1EA; }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { background:#777; }
+  /* 9:16; в сетке профиля видна зона 3:4 (y 240-1680) - заголовок и фото внутри неё */
+  .s { width:1080px; height:1920px; position:relative; overflow:hidden; font-family:"Onest",sans-serif; color:var(--ink); background:var(--milk); }
+  .head { position:absolute; left:72px; right:72px; top:270px; display:flex; align-items:center; gap:28px; }
+  .head img { height:38px; display:block; }
+  .head i { flex:1; height:1.5px; background:rgba(30,24,20,.3); }
+  .head b { font-size:24px; font-weight:500; letter-spacing:.24em; text-transform:uppercase; color:rgba(30,24,20,.6); }
+  .t { position:absolute; left:72px; right:72px; top:360px; }
+  h1 { font-size:96px; font-weight:800; line-height:.96; letter-spacing:-.04em; text-transform:uppercase; }
+  h1 span { color:var(--copper); }
+  .g { position:absolute; left:72px; right:72px; top:690px; height:900px; display:grid; grid-template-columns:1fr 1fr; grid-template-rows:410px 1fr; gap:16px; }
+  .g div { border-radius:22px; background-size:cover; background-position:center; }
+  .g .a { grid-column:1 / span 2; }
+  .price { position:absolute; right:96px; top:1520px; padding:18px 34px; border-radius:999px; background:var(--copper); color:var(--ink); font-size:40px; font-weight:800;
+    box-shadow:0 12px 30px rgba(30,24,20,.25); }
+  .bottom { position:absolute; left:72px; right:72px; top:1640px; font-size:30px; font-weight:500; color:rgba(30,24,20,.6); letter-spacing:.02em; }
+</style>
+</head>
+<body>
+<section class="s">
+  <div class="head"><img src="src/logo_dark.png" alt="TEZIS"><i></i><b>подборка</b></div>
+  <div class="t"><h1>Столы как<br>из Pinterest -<br><span>с маркетплейсов</span></h1></div>
+  <div class="g">
+    <div class="a" style="background-image:url(src/cloud.jpg)"></div>
+    <div style="background-image:url(src/red.jpg)"></div>
+    <div style="background-image:url(src/travertine.jpg)"></div>
+  </div>
+  <div class="price">от 3 256 ₽</div>
+</section>
+</body>
+</html>
