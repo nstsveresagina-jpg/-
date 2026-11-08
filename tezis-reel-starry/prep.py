@@ -18,7 +18,7 @@ for n, o in [('shell', 'shell'), ('empty_blue', 'empty_blue'), ('after', 'after'
 # вечер: дневной свет приглушён и холоднее, у светильников тёплое свечение
 a = up('after').astype(np.float32) / 255
 yy, xx = np.mgrid[0:H, 0:W].astype(np.float32)
-night = a * 0.30
+night = a * 0.58
 night[..., 0] *= 1.12; night[..., 2] *= 0.85  # BGR: холоднее
 glow = np.zeros_like(a)
 import json
@@ -29,10 +29,10 @@ for x, y, r, k in lamps:
     glow += g[..., None] * np.array([0.55, 0.78, 1.0])  # тёплый (BGR)
     core = np.exp(-(d / 46) ** 2)
     night = night * (1 - core[..., None]) + a * core[..., None] * 1.25
-lit = night + glow * a * 1.15 + glow * 0.10
+lit = night + glow * a * 1.0 + glow * 0.06 + a * 0.16 * np.array([0.75, 0.92, 1.08])  # общий тёплый свет по комнате
 # окно - вечерняя синева
 win = np.zeros((H, W), np.float32); cv2.rectangle(win, (115, 760), (560, 1240), 1, -1)
 win = cv2.GaussianBlur(win, (0, 0), 12)[..., None]
-lit = lit * (1 - win * 0.8) + win * 0.8 * (a * 0.22 * np.array([1.7, 1.0, 0.55]))
+lit = lit * (1 - win * 0.78) + win * 0.78 * (a * 0.22 * np.array([1.7, 1.0, 0.55]))
 cv2.imwrite(os.path.join(out, 'night.jpg'), np.clip(lit * 255, 0, 255).astype(np.uint8), [cv2.IMWRITE_JPEG_QUALITY, 94])
 print('ok')
