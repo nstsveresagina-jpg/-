@@ -1,0 +1,14 @@
+{
+  "enabledPlugins": {
+    "marketing@anthropic-plugin-directory": false,
+    "operations@anthropic-plugin-directory": false,
+    "small-business@anthropic-plugin-directory": false,
+    "headroom@anthropic-plugin-directory": false,
+    "claude-code-setup@anthropic-plugin-directory": false,
+    "image-generation@anthropic-plugin-directory": false,
+    "motion-reel@anthropic-plugin-directory": false,
+    "animation-studio@anthropic-plugin-directory": false,
+    "video-shotcraft@anthropic-plugin-directory": false,
+    "video-cleanup@anthropic-plugin-directory": false
+  }
+}
