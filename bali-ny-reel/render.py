@@ -37,8 +37,8 @@ G_NIGHT = dict(sat=1.20, con=1.00, bri=0.02, gam=1.12, vib=0.20)
 G_PINK = dict(sat=1.12, con=1.04, bri=0.02, gam=1.04, vib=0.14)
 SLOTS = [
     # 0-10 hook: БАЛИ / РОЖДЕСТВО И НОВЫЙ ГОД
-    dict(k=0,  src='xmas_tree',        ss=2.0,  z=(1.00, 1.06), g=G_STD),
-    dict(k=3,  src='diamond_beach',    ss=3.0,  z=(1.00, 1.05), g=G_STD, punch=0.16),
+    dict(k=0,  src='diamond_beach',    ss=2.0,  z=(1.00, 1.06), g=G_STD),
+    dict(k=3,  src='jungle_mist',      ss=4.0,  z=(1.00, 1.05), g=G_STD, punch=0.16),
     dict(k=5,  src='beach_club',       ss=2.0,  z=(1.00, 1.05), g=G_WARM),
     dict(k=7,  src='fireworks_sea',    ss=5.0,  z=(1.00, 1.05), g=G_NIGHT),
     # 10-18 Ubud
@@ -325,10 +325,9 @@ K_LOGO = 59
 def finale():
     t_in, t_out = beat(50) + 0.10, beat(K_LOGO) - 0.16
     ELS.append(El(text_layer('11 дней / 10 ночей · мини-группа 10 человек', F_BODY, fit('11 дней / 10 ночей · мини-группа 10 человек', F_BODY, 40)), (W / 2, 330), t_in, t_out, rise=36))
-    ELS.append(CountUp((W / 2, 440), t_in + 0.16, t_out))
+    ELS.append(El(pill('ВСЕГО 10 МЕСТ', F_HEAD, 72, CREAM, NAVY, 54, 30), (W / 2, 440), t_in + 0.16, t_out, anim='pop', d_in=0.42, scale_from=0.6))
     ELS.append(El(pill('АВИАБИЛЕТЫ ВКЛЮЧЕНЫ', F_HEAD, 44, NAVY, ORANGE, 40, 22), (W / 2, 560), t_in + 1.0, t_out, anim='pop', d_in=0.42, scale_from=0.6))
-    old = f"{OLD_PRICE:,}".replace(',', ' ')
-    ELS.append(El(text_layer(f'цена по акции для первых 4 участников, обычная — {old} ₩', F_BODY, 30), (W / 2, 648), t_in + 1.2, t_out, rise=24))
+    ELS.append(El(text_layer('вылет из Инчхона · авторский тур JEJU TRIP', F_BODY, 34), (W / 2, 648), t_in + 1.2, t_out, rise=24))
     ELS.append(El(pill('ПИШИТЕ БАЛИ В DIRECT', F_HEAD, 54, NAVY, ORANGE, 46, 26), (W / 2, 1450), beat(54) + 0.10, t_out, anim='pop', d_in=0.42, scale_from=0.6))
     ELS.append(El(pill('пришлём программу и условия бронирования', F_BODY, 34, NAVY, CREAM, 34, 17), (W / 2, 1570), beat(54) + 0.35, t_out, rise=30))
     t_h = beat(K_LOGO) + 0.02

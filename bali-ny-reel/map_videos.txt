@@ -1,5 +1,5 @@
-xmas_tree xmas_6
 diamond_beach hook_4
+jungle_mist hook_1
 beach_club beachclub_5
 fireworks_sea fireworks_3
 rice_terrace ricefield_5
