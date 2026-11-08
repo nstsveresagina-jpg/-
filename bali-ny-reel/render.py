@@ -64,7 +64,7 @@ SLOTS = [
     dict(k=40, src='beach_club',       ss=7.0,  z=(1.00, 1.04), g=G_WARM),
     dict(k=42, src='surf_wave',        ss=5.0,  z=(1.00, 1.04), g=G_STD),
     # 44-50 Christmas + New Year
-    dict(k=44, src='palm_lights',      ss=4.0,  z=(1.00, 1.05), g=G_NIGHT, punch=0.12),
+    dict(k=44, src='beach_dinner',     ss=1.0,  z=(1.00, 1.05), g=G_NIGHT, punch=0.12),
     dict(k=47, src='fireworks_pink',   ss=1.0,  z=(1.00, 1.05), g=G_NIGHT),
     # 50-59 price and call to action
     dict(k=50, src='sunset_waves',     ss=3.0,  z=(1.00, 1.05), g=G_WARM, punch=0.12),
@@ -328,7 +328,7 @@ def finale():
     ELS.append(El(pill('ВСЕГО 10 МЕСТ', F_HEAD, 72, CREAM, NAVY, 54, 30), (W / 2, 440), t_in + 0.16, t_out, anim='pop', d_in=0.42, scale_from=0.6))
     ELS.append(El(pill('АВИАБИЛЕТЫ ВКЛЮЧЕНЫ', F_HEAD, 44, NAVY, ORANGE, 40, 22), (W / 2, 560), t_in + 1.0, t_out, anim='pop', d_in=0.42, scale_from=0.6))
     ELS.append(El(text_layer('вылет из Инчхона · авторский тур JEJU TRIP', F_BODY, 34), (W / 2, 648), t_in + 1.2, t_out, rise=24))
-    ELS.append(El(pill('ПИШИТЕ БАЛИ В DIRECT', F_HEAD, 54, NAVY, ORANGE, 46, 26), (W / 2, 1450), beat(54) + 0.10, t_out, anim='pop', d_in=0.42, scale_from=0.6))
+    ELS.append(El(pill('ПИШИТЕ БАЛИ В КОММЕНТАРИЯХ', F_HEAD, fit('ПИШИТЕ БАЛИ В КОММЕНТАРИЯХ', F_HEAD, 54, 880), NAVY, ORANGE, 46, 26), (W / 2, 1450), beat(54) + 0.10, t_out, anim='pop', d_in=0.42, scale_from=0.6))
     ELS.append(El(pill('пришлём программу и условия бронирования', F_BODY, 34, NAVY, CREAM, 34, 17), (W / 2, 1570), beat(54) + 0.35, t_out, rise=30))
     t_h = beat(K_LOGO) + 0.02
     logo = Image.open(os.path.join(HERE, 'logo.png')).convert('RGBA'); lh = 205

@@ -19,7 +19,7 @@ lake_temple gate_1
 surf_girl surf_4
 sunset_palms beachsunset_7
 surf_wave surf_6
-palm_lights xmas_1
+beach_dinner fest/ad1596a9
 fireworks_pink fireworks_4
 sunset_waves beachsunset_2
 ceremony_women temple_1

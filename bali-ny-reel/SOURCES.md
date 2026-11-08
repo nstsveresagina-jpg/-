@@ -23,7 +23,7 @@
 | surf_girl |  | womenandwaves | https://www.pinterest.com/womenandwaves/women-%2B-waves/ |
 | sunset_palms | Sunset ツ | rougeinstyle | https://www.pinterest.com/rougeinstyle/sunset/ |
 | surf_wave | Bali Surf Barrels | banndenis | https://www.pinterest.com/banndenis/surf/ |
-| palm_lights | Caribbean Christmas! 🌴🥂 | l_jaime | https://www.pinterest.com/l_jaime/_quick_saves/ |
+| beach_dinner |  | super1086 | https://www.pinterest.com/super1086/_tpd_social/ |
 | fireworks_pink |  | belmondtravel | https://www.pinterest.com/belmondtravel/travel-inspiration/ |
 | sunset_waves |  | leebose79 | https://www.pinterest.com/leebose79/ddy-vid/ |
 | sunset_palms2 | "Immerse Yourself in the Timeless Splendor of Bali | smailingdmc | https://www.pinterest.com/smailingdmc/java/ |
