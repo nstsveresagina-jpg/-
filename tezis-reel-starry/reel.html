@@ -113,8 +113,10 @@ window.render = (t) => {
   // ---- 4. мебель и связи с картиной (18.6 - 26.6)
   if (t >= 18.6 && t < 30.4) {
     const kb = 1.0 + 0.05 * clamp((t - 18.6) / 11.8);
-    h += layer(IMG.emptyBlue, 1, kb);
-    h += layer(IMG.after, inout(clamp((t - 18.6) / 0.9)), kb);
+    // быстрый наезд: ракурс готовой спальни немного другой, поэтому без наложения кадров
+    h += layer(IMG.emptyBlue, 1, kb * (1 + 0.15 * clamp((t - 18.4) / 0.4)));
+    const tr = clamp((t - 18.6) / 0.45);
+    if (t > 18.6) h += layer(IMG.after, tr, kb * (1.12 - 0.12 * ease(tr)));
     // вечер
     if (t > 26.4) h += layer(IMG.night, inout(clamp((t - 26.4) / 1.4)), kb);
     const link = (a, b, img, x, y, tx, ty, txt) => {
@@ -125,7 +127,7 @@ window.render = (t) => {
         + `<svg class="lines" width="1080" height="1920" style="opacity:${p}"><line x1="${tx + 95}" y1="${ty + 190}" x2="${x}" y2="${y}" stroke="#F5F1EA" stroke-width="4" stroke-dasharray="10 9"/></svg>`
         + dot(x, y, p) + tag(tx, ty + 210, txt, p);
     };
-    h += link(19.4, 22.2, IMG.cypress, ...P.headboard, 'как кипарис');
+    h += link(19.4, 22.2, IMG.swirl, ...P.headboard, 'синий, как небо');
     h += link(20.6, 22.4, IMG.village, ...P.floor, 'тёплый, как огни');
     h += link(22.2, 25.8, IMG.star, ...P.lamps, 'звёзды');
     h += link(23.4, 25.9, IMG.moon, ...P.moon, 'луна');

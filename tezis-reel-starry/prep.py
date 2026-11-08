@@ -21,7 +21,8 @@ yy, xx = np.mgrid[0:H, 0:W].astype(np.float32)
 night = a * 0.30
 night[..., 0] *= 1.12; night[..., 2] *= 0.85  # BGR: холоднее
 glow = np.zeros_like(a)
-lamps = [(869, 756, 440, 1.2), (869, 837, 400, 1.0), (950, 1040, 380, 1.3)]  # бра и настольная лампа
+import json
+lamps = json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'lamps.json')))  # шары-светильники
 for x, y, r, k in lamps:
     d = np.sqrt((xx - x) ** 2 + (yy - y) ** 2)
     g = np.exp(-(d / r) ** 2 * 2.2) * k
@@ -30,7 +31,7 @@ for x, y, r, k in lamps:
     night = night * (1 - core[..., None]) + a * core[..., None] * 1.25
 lit = night + glow * a * 1.15 + glow * 0.10
 # окно - вечерняя синева
-win = np.zeros((H, W), np.float32); cv2.rectangle(win, (115, 735), (445, 1375), 1, -1)
+win = np.zeros((H, W), np.float32); cv2.rectangle(win, (115, 760), (560, 1240), 1, -1)
 win = cv2.GaussianBlur(win, (0, 0), 12)[..., None]
 lit = lit * (1 - win * 0.8) + win * 0.8 * (a * 0.22 * np.array([1.7, 1.0, 0.55]))
 cv2.imwrite(os.path.join(out, 'night.jpg'), np.clip(lit * 255, 0, 255).astype(np.uint8), [cv2.IMWRITE_JPEG_QUALITY, 94])
