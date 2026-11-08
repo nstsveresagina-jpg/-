@@ -23,5 +23,5 @@ d.text((x0 + logo.width + 16, 298), 'JEJU', font=F, fill=RED); d.text((x0 + logo
 ctext('БАЛИ', FH, 200, WHITE, 420)
 ctext('РОЖДЕСТВО И НОВЫЙ ГОД', FH, 76, ORANGE, 650)
 ctext('два праздника в одном путешествии', FB, 44, WHITE, 780, shadow=1.0)
-ctext('23.12.2026 – 03.01.2027 · 11 дней · мини-группа', FB, 38, WHITE, 1500, shadow=1.0)
+ctext('23.12.2026 – 03.01.2027 · 11 дней · мини-группа', FB, 38, WHITE, 860, shadow=1.0)
 im.convert('RGB').save('cover.jpg', quality=95)
