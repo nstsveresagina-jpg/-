@@ -12,7 +12,7 @@ def up(name):
     blur = cv2.GaussianBlur(im, (0, 0), 1.2)
     return cv2.addWeighted(im, 1.35, blur, -0.35, 0)  # лёгкая резкость после увеличения
 
-for n, o in [('before', 'before'), ('empty_before', 'empty_before'), ('empty_blue', 'empty_blue'), ('after', 'after')]:
+for n, o in [('shell', 'shell'), ('empty_blue', 'empty_blue'), ('after', 'after')]:
     cv2.imwrite(os.path.join(out, o + '.jpg'), up(n), [cv2.IMWRITE_JPEG_QUALITY, 94])
 
 # вечер: дневной свет приглушён и холоднее, у светильников тёплое свечение

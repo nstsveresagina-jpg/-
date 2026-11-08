@@ -43,7 +43,7 @@
 <body>
 <section class="s" id="s"></section>
 <script>
-const IMG = { before:'img/before.jpg', emptyB:'img/empty_before.jpg', emptyBlue:'img/empty_blue.jpg', after:'img/after.jpg', night:'img/night.jpg',
+const IMG = { before:'img/shell.jpg', emptyB:'img/shell.jpg', emptyBlue:'img/empty_blue.jpg', after:'img/after.jpg', night:'img/night.jpg',
   art:'art/starry.jpg', moon:'art/moon.jpg', star:'art/star.jpg', cypress:'art/cypress.jpg', village:'art/village.jpg', swirl:'art/swirl.jpg' };
 const PAL = [['#303E60','ночь'], ['#435D8C','кобальт'], ['#688298','туман'], ['#1F2326','кипарис'], ['#E8C547','звёзды']];
 // координаты меток в кадре комнаты (1080x1920) задаются в positions.js после генерации
@@ -82,7 +82,7 @@ window.render = (t) => {
     const o = 1 - clamp((t - 7.0) / 0.3);
     h += `<div style="opacity:${o}">` + P.old.map(([x, y, n], i) => dot(x, y, clamp((t - 4.5 - i * .45) / .4)) + tag(x + 26, y - 30, n, clamp((t - 4.6 - i * .45) / .4))).join('') + `</div>`;
   }
-  if (t >= 7.2 && t < 8.6) h += `<div class="center" style="top:1330px;opacity:${win(t, 7.2, 8.6, .2, .25)}"><h2>Выносим <b>всё</b></h2></div>`;
+  if (t >= 7.2 && t < 8.6) h += `<div class="center" style="top:1330px;opacity:${win(t, 7.2, 8.6, .2, .25)}"><h2>Черновая <b>отделка</b></h2></div>`;
 
   // ---- 2. картина крупно (8.2 - 13.6)
   if (t >= 8.2 && t < 13.9) {
@@ -138,7 +138,7 @@ window.render = (t) => {
     h += `<div class="card" style="opacity:${a}"></div>`;
     const p1 = spring(clamp((t - 30.3) / .5)), p2 = spring(clamp((t - 30.6) / .5));
     h += `<div class="center" style="top:300px;opacity:${a}"><h2 style="font-size:66px">Уютно вышло?<br><b>Или слишком смело?</b></h2></div>`;
-    h += `<div class="panel" style="left:84px;background-image:url(${IMG.before});opacity:${a};transform:translateY(${(1 - p1) * 80}px) rotate(-2deg)"><span>было</span></div>`;
+    h += `<div class="panel" style="left:84px;background-image:url(${IMG.before});opacity:${a};transform:translateY(${(1 - p1) * 80}px) rotate(-2deg)"><span>черновая</span></div>`;
     h += `<div class="panel" style="left:566px;background-image:url(${IMG.night});opacity:${a};transform:translateY(${(1 - p2) * 80}px) rotate(2deg)"><span>по Ван Гогу</span></div>`;
   }
 
