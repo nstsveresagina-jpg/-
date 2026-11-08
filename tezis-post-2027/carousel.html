@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<title>TEZIS 2026 vs 2027</title>
+<style>
+  @font-face { font-family:"Onest"; src:url(fonts/Onest-400.ttf); font-weight:400; }
+  @font-face { font-family:"Onest"; src:url(fonts/Onest-500.ttf); font-weight:500; }
+  @font-face { font-family:"Onest"; src:url(fonts/Onest-700.ttf); font-weight:700; }
+  @font-face { font-family:"Onest"; src:url(fonts/Onest-800.ttf); font-weight:800; }
+  :root { --copper:#C49A72; --ink:#1E1814; --milk:#F5F1EA; --muted:rgba(30,24,20,.62); }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { background:#777; }
+  .s { width:1080px; height:1350px; position:relative; overflow:hidden; font-family:"Onest",sans-serif; color:var(--ink); background:var(--milk); margin-bottom:20px; }
+  .head { position:absolute; left:64px; right:64px; top:56px; display:flex; align-items:center; gap:28px; }
+  .head img { height:34px; display:block; }
+  .head i { flex:1; height:1.5px; background:rgba(30,24,20,.3); }
+  .head b { font-size:22px; font-weight:500; letter-spacing:.2em; color:var(--muted); }
+  .t { position:absolute; left:64px; right:64px; top:122px; }
+  .kick { font-size:22px; font-weight:500; letter-spacing:.32em; text-transform:uppercase; color:var(--muted); }
+  .bar { width:80px; height:3px; background:var(--copper); margin:14px 0 18px; }
+  h1 { font-size:58px; font-weight:800; line-height:1.0; letter-spacing:-.035em; text-transform:uppercase; }
+  h1 span { color:var(--copper); }
+  .cmp { position:absolute; left:64px; right:64px; top:330px; height:830px; display:grid; grid-template-columns:1fr 1fr; gap:10px; border-radius:22px; overflow:hidden; background:#fff; }
+  .ph { position:relative; background-size:cover; background-position:center; }
+  .chip { position:absolute; left:50%; bottom:30px; transform:translateX(-50%); padding:14px 34px; border-radius:999px; font-size:38px; font-weight:800; letter-spacing:.02em; }
+  .chip.old { background:var(--ink); color:var(--milk); }
+  .chip.new { background:var(--copper); color:var(--ink); }
+  .cap { position:absolute; left:64px; right:64px; top:1186px; display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+  .cap div { font-size:28px; font-weight:500; line-height:1.25; color:var(--muted); padding:0 8px; }
+  .cap div b { display:block; font-weight:700; color:var(--ink); }
+  /* обложка */
+  .c .full { position:absolute; inset:0; display:grid; grid-template-columns:1fr 1fr; gap:8px; background:var(--milk); }
+  .c .full div { background-size:cover; background-position:center; }
+  .c .shade { position:absolute; left:0; right:0; top:0; height:760px; background:linear-gradient(rgba(20,15,12,.62), rgba(20,15,12,.35) 60%, rgba(20,15,12,0)); }
+  .c .head i { background:rgba(255,255,255,.4); }
+  .c .head b, .c .kick { color:rgba(255,255,255,.8); }
+  .c .t { color:#fff; top:150px; }
+  .c h1 { font-size:104px; line-height:.95; }
+  .c .sub { margin-top:22px; font-size:32px; font-weight:500; color:rgba(255,255,255,.9); max-width:760px; }
+  .c .chip { bottom:70px; font-size:46px; padding:16px 42px; }
+  .c .vs { position:absolute; left:50%; bottom:76px; transform:translateX(-50%); width:84px; height:84px; border-radius:50%; background:var(--milk); color:var(--ink);
+    display:flex; align-items:center; justify-content:center; font-size:30px; font-weight:800; z-index:2; }
+  /* финал */
+  .f { background:var(--ink); color:#fff; }
+  .f .head i { background:rgba(255,255,255,.3); }
+  .f .head b, .f .kick { color:rgba(255,255,255,.6); }
+  .f .t { top:230px; }
+  .f h1 { font-size:88px; }
+  .f .sub { color:rgba(255,255,255,.8); font-size:32px; line-height:1.35; margin-top:30px; max-width:860px; }
+  .f .cta { position:absolute; left:64px; right:64px; top:800px; border:2px solid var(--copper); border-radius:28px; padding:40px 48px; }
+  .f .cta p { font-size:32px; line-height:1.3; color:rgba(255,255,255,.85); }
+  .f .cta strong { display:block; font-size:88px; font-weight:800; letter-spacing:-.02em; color:var(--copper); margin:8px 0 4px; }
+  .f .addr { position:absolute; left:64px; top:1220px; font-size:24px; color:rgba(255,255,255,.6); }
+</style>
+</head>
+<body>
+<div id="root"></div>
+<script>
+const SL = [
+  ['socket', 'Розетки', 'Розетка <span>растворяется</span> в стене', ['Белая рамка', 'выпирает и бросается в глаза'], ['В цвет стены', 'вровень с отделкой, рамки нет']],
+  ['skirting', 'Плинтус', '<span>Теневой</span> плинтус вместо обычного', ['Широкий плинтус', 'отдельная деталь, собирает пыль'], ['Теневой шов', 'стена «парит» над полом']],
+  ['toilet', 'Санузел', 'Всё лишнее - <span>в стену</span>', ['Держатели на виду', 'ёршик и запас бумаги на полу'], ['Скрытая ниша', 'дверца в той же плитке']],
+  ['vent', 'Вентиляция', 'Решётку <span>не видно</span>', ['Пластиковая решётка', 'желтеет и собирает пыль'], ['Скрытый диффузор', 'тонкий круг вровень с потолком']],
+  ['drain', 'Душ', 'Трап <span>вдоль стены</span>', ['Точечный трап', 'плитку режут «конвертом»'], ['Линейный трап', 'пол одной плоскостью']],
+  ['shower', 'Душ', 'Смеситель <span>внутри</span> стены', ['Штанга и шланг', 'много хрома на стене'], ['Скрытая система', 'тропический душ и лаконичная панель']],
+];
+const TOTAL = String(SL.length + 2).padStart(2, '0');
+const head = (n, logo) => `<div class="head"><img src="${logo || 'logo_dark.png'}" alt="TEZIS"><i></i><b>${String(n).padStart(2, '0')} / ${TOTAL}</b></div>`;
+let h = `<section class="s c">
+  <div class="full"><div style="background-image:url(img/shower_2026.jpg)"></div><div style="background-image:url(img/shower_2027.jpg)"></div></div>
+  <div class="shade"></div>${head(1, 'logo_light.png')}
+  <div class="t"><div class="kick">Тренды отделки</div><div class="bar"></div><h1>Ремонт<br>2026 <span>vs</span> 2027</h1>
+  <div class="sub">6 деталей, которые уже устаревают. Листайте и проверьте свой ремонт</div></div>
+  <div class="chip old" style="left:25%">2026</div><div class="vs">vs</div><div class="chip new" style="left:75%">2027</div>
+</section>`;
+SL.forEach(([img, k, title, a, b], i) => {
+  h += `<section class="s">${head(i + 2)}
+  <div class="t"><div class="kick">${k}</div><div class="bar"></div><h1>${title}</h1></div>
+  <div class="cmp"><div class="ph" style="background-image:url(img/${img}_2026.jpg)"><div class="chip old">2026</div></div>
+    <div class="ph" style="background-image:url(img/${img}_2027.jpg)"><div class="chip new">2027</div></div></div>
+  <div class="cap"><div><b>${a[0]}</b>${a[1]}</div><div><b>${b[0]}</b>${b[1]}</div></div>
+</section>`;
+});
+h += `<section class="s f">${head(SL.length + 2, 'logo_light.png')}
+  <div class="t"><div class="kick">TEZIS / ремонт и дизайн</div><div class="bar"></div>
+  <h1>Делаем как<br>в <span>2027</span> уже сейчас</h1>
+  <div class="sub">Скрытые решения закладываем ещё в дизайн-проекте: розетки, ниши, трапы и теневой плинтус встают на место без переделок.</div></div>
+  <div class="cta"><p>Напишите в комментариях</p><strong>«РАСЧЁТ»</strong><p>и площадь&nbsp;- пришлём стоимость ремонта</p></div>
+  <div class="addr">Тюмень, ул. Газовиков, 40</div>
+</section>`;
+document.getElementById('root').innerHTML = h;
+// ждём загрузки всех фото, потом даём сигнал рендеру
+const urls = [...h.matchAll(/url\(([^)]+)\)/g)].map(m => m[1]);
+Promise.all(urls.map(u => new Promise(r => { const im = new Image(); im.onload = im.onerror = r; im.src = u; }))).then(() => { window.READY = true; });
+</script>
+</body>
+</html>
