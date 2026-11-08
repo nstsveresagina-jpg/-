@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<title>TEZIS Starry Bedroom</title>
+<style>
+  @font-face { font-family:"Onest"; src:url(fonts/Onest-500.ttf); font-weight:500; }
+  @font-face { font-family:"Onest"; src:url(fonts/Onest-700.ttf); font-weight:700; }
+  @font-face { font-family:"Onest"; src:url(fonts/Onest-800.ttf); font-weight:800; }
+  :root { --copper:#C49A72; --copper-l:#E2BC94; --ink:#1E1814; --milk:#F5F1EA; }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html, body { background:#000; }
+  .s { width:1080px; height:1920px; position:relative; overflow:hidden; font-family:"Onest",sans-serif; color:#fff; background:#111; }
+  .layer { position:absolute; inset:0; background-size:cover; background-position:center; will-change:transform; }
+  .tg { position:absolute; left:0; right:0; top:0; height:720px; background:linear-gradient(rgba(10,10,20,.5), rgba(10,10,20,.22) 55%, rgba(10,10,20,0)); }
+  .bg { position:absolute; left:0; right:0; bottom:0; height:700px; background:linear-gradient(rgba(10,10,20,0), rgba(10,10,20,.4)); }
+  .hook { position:absolute; left:76px; right:76px; top:250px; text-shadow:0 0 24px rgba(0,0,0,.35); }
+  .hook .bar { height:4px; width:80px; background:var(--copper); margin-bottom:24px; }
+  .hook .k { font-size:30px; font-weight:500; letter-spacing:.3em; text-transform:uppercase; color:var(--copper-l); margin-bottom:14px; }
+  .hook h1 { font-size:92px; font-weight:800; line-height:.98; letter-spacing:-.04em; text-transform:uppercase; }
+  .hook h1 b { color:var(--copper-l); }
+  .art { position:absolute; border:10px solid #EFE6D6; box-shadow:0 20px 60px rgba(0,0,0,.45); background-size:cover; background-position:center; }
+  .sw { position:absolute; width:110px; height:150px; border-radius:12px; box-shadow:0 10px 30px rgba(0,0,0,.35); border:4px solid #F5F1EA; }
+  .sw span { position:absolute; left:0; right:0; bottom:-44px; text-align:center; font-size:24px; font-weight:700; text-shadow:0 1px 8px rgba(0,0,0,.6); }
+  .tag { position:absolute; display:flex; align-items:center; gap:14px; padding:14px 22px 14px 16px; border-radius:999px; background:rgba(245,241,234,.94); color:var(--ink);
+    font-size:30px; font-weight:700; box-shadow:0 10px 30px rgba(0,0,0,.3); white-space:nowrap; transform-origin:left center; }
+  .tag i { width:22px; height:22px; border-radius:50%; background:var(--copper); display:block; flex:none; }
+  .dot { position:absolute; width:26px; height:26px; margin:-13px 0 0 -13px; border-radius:50%; border:5px solid #fff; background:var(--copper); box-shadow:0 0 0 8px rgba(196,154,114,.35); }
+  .thumb { position:absolute; width:190px; height:190px; border-radius:16px; border:6px solid #F5F1EA; background-size:cover; background-position:center; box-shadow:0 14px 40px rgba(0,0,0,.4); }
+  svg.lines { position:absolute; inset:0; }
+  .center { position:absolute; left:70px; right:70px; text-align:center; text-shadow:0 0 26px rgba(0,0,0,.45); }
+  .center h2 { font-size:78px; font-weight:800; line-height:1.02; letter-spacing:-.03em; text-transform:uppercase; }
+  .center h2 b { color:var(--copper-l); }
+  .panel { position:absolute; top:640px; width:430px; height:764px; border-radius:22px; border:6px solid #F5F1EA; background-size:cover; background-position:center; box-shadow:0 20px 60px rgba(0,0,0,.5); }
+  .panel span { position:absolute; left:50%; bottom:-70px; transform:translateX(-50%); white-space:nowrap; font-size:30px; font-weight:700; }
+  .card { position:absolute; inset:0; background:var(--ink); }
+  .frame { position:absolute; left:290px; top:620px; width:500px; height:640px; border:22px solid #B8925F; outline:6px solid #E2BC94; outline-offset:-30px; background:#EFE6D6;
+    display:flex; align-items:center; justify-content:center; font-size:260px; font-weight:800; color:var(--ink); box-shadow:0 30px 80px rgba(0,0,0,.6); }
+  .btn { position:absolute; left:50%; top:1420px; transform:translateX(-50%); padding:26px 52px; border-radius:999px; background:var(--copper); color:var(--ink); font-size:38px; font-weight:800; }
+  .logo { position:absolute; left:76px; top:262px; height:40px; }
+</style>
+</head>
+<body>
+<section class="s" id="s"></section>
+<script>
+const IMG = { before:'img/before.jpg', emptyB:'img/empty_before.jpg', emptyBlue:'img/empty_blue.jpg', after:'img/after.jpg', night:'img/night.jpg',
+  art:'art/starry.jpg', moon:'art/moon.jpg', star:'art/star.jpg', cypress:'art/cypress.jpg', village:'art/village.jpg', swirl:'art/swirl.jpg' };
+const PAL = [['#303E60','ночь'], ['#435D8C','кобальт'], ['#688298','туман'], ['#1F2326','кипарис'], ['#E8C547','звёзды']];
+// координаты меток в кадре комнаты (1080x1920) задаются в positions.js после генерации
+const clamp = (x, a = 0, b = 1) => Math.max(a, Math.min(b, x));
+const ease = x => 1 - Math.pow(1 - x, 3);
+const inout = x => x < .5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2;
+const spring = x => x >= 1 ? 1 : 1 - Math.exp(-6 * x) * Math.cos(9 * x);
+const win = (t, a, b, fi = .3, fo = .3) => clamp((t - a) / fi) * (1 - clamp((t - (b - fo)) / fo));
+const layer = (src, op = 1, sc = 1, x = 0, y = 0, extra = '') =>
+  `<div class="layer" style="background-image:url(${src});opacity:${op};transform:translate(${x}px,${y}px) scale(${sc});${extra}"></div>`;
+const tag = (x, y, txt, p) => p <= 0 ? '' : `<div class="tag" style="left:${x}px;top:${y}px;opacity:${clamp(p * 2)};transform:scale(${.6 + .4 * spring(p)})"><i></i>${txt}</div>`;
+const dot = (x, y, p) => p <= 0 ? '' : `<div class="dot" style="left:${x}px;top:${y}px;transform:scale(${spring(p)})"></div>`;
+
+window.render = (t) => {
+  const P = window.POS;
+  let h = '';
+  // ---- 1. до: старая спальня, хук, картина и палитра (0 - 4.2)
+  if (t < 8.6) {
+    const kb = 1.06 - 0.04 * clamp(t / 8.2);
+    h += layer(IMG.before, 1, kb);
+    // выносим всё: шторка к пустой комнате
+    if (t > 6.9) h += layer(IMG.emptyB, inout(clamp((t - 6.9) / 0.8)), kb);
+  }
+  if (t < 4.4) {
+    const o = 1 - clamp((t - 4.0) / 0.4);
+    h += `<div class="tg" style="opacity:${o}"></div><div class="hook" style="opacity:${o}"><div class="bar"></div><div class="k">TEZIS / дизайн</div><h1>Спальня по картине <b>«Звёздная ночь»</b></h1></div>`;
+    const ap = spring(clamp((t - 1.2) / 0.6));
+    if (t > 1.2) h += `<div class="art" style="left:600px;top:930px;width:380px;height:301px;background-image:url(${IMG.art});opacity:${o};transform:rotate(${(1 - ap) * 8 + 3}deg) scale(${.4 + .6 * ap})"></div>`;
+    PAL.forEach(([c, n], i) => {
+      const p = spring(clamp((t - 2.3 - i * 0.12) / 0.5));
+      if (t > 2.3 + i * .12) h += `<div class="sw" style="left:${560 + i * 92}px;top:${1290 + (i % 2) * 18}px;background:${c};opacity:${o * clamp(p * 2)};transform:translateY(${(1 - p) * 60}px) rotate(${(i - 2) * 7}deg)"></div>`;
+    });
+  }
+  // метки старых вещей (4.4 - 7)
+  if (t >= 4.4 && t < 7.3) {
+    const o = 1 - clamp((t - 7.0) / 0.3);
+    h += `<div style="opacity:${o}">` + P.old.map(([x, y, n], i) => dot(x, y, clamp((t - 4.5 - i * .45) / .4)) + tag(x + 26, y - 30, n, clamp((t - 4.6 - i * .45) / .4))).join('') + `</div>`;
+  }
+  if (t >= 7.2 && t < 8.6) h += `<div class="center" style="top:1330px;opacity:${win(t, 7.2, 8.6, .2, .25)}"><h2>Выносим <b>всё</b></h2></div>`;
+
+  // ---- 2. картина крупно (8.2 - 13.6)
+  if (t >= 8.2 && t < 13.9) {
+    const a = win(t, 8.2, 13.9, .4, .35), k = clamp((t - 8.2) / 5.7);
+    // картина 1920x1520 -> показываем фрагмент неба, медленный наезд
+    const sc = 1.0 + 0.18 * inout(k);
+    h += `<div class="layer" style="opacity:${a};background:#0d1530"></div>`;
+    h += `<div class="layer" style="opacity:${a};background-image:url(${IMG.art});background-size:auto 100%;background-position:${38 - 10 * k}% 50%;transform:scale(${sc})"></div>`;
+    h += `<div class="tg" style="opacity:${a}"></div>`;
+    h += tag(120, 560, 'синий - почти всё небо', clamp((t - 9.6) / .4) * a);
+    h += dot(520, 1010, clamp((t - 11.2) / .4) * a) + tag(560, 980, 'жёлтый - только точки света', clamp((t - 11.3) / .4) * a);
+  }
+
+  // ---- 3. перекраска стен (13.6 - 18.6)
+  if (t >= 13.6 && t < 19.3) {
+    const kb = 1.02 + 0.03 * clamp((t - 13.6) / 5.7);
+    h += layer(IMG.emptyB, 1, kb);
+    const w = inout(clamp((t - 14.4) / 2.6));
+    // мазок краски: шторка слева направо с мягким краем
+    h += `<div class="layer" style="background-image:url(${IMG.emptyBlue});transform:scale(${kb});-webkit-mask-image:linear-gradient(100deg,#000 ${w * 120 - 15}%,transparent ${w * 120}%)"></div>`;
+    h += `<div class="sw" style="left:76px;top:300px;width:120px;height:120px;border-radius:50%;background:#304A86;opacity:${win(t, 15.6, 19.0, .3, .3)};transform:scale(${spring(clamp((t - 15.6) / .5))})"></div>`;
+    h += tag(220, 330, 'известковая краска', win(t, 15.8, 19.0, .3, .3));
+  }
+
+  // ---- 4. мебель и связи с картиной (18.6 - 26.6)
+  if (t >= 18.6 && t < 30.4) {
+    const kb = 1.0 + 0.05 * clamp((t - 18.6) / 11.8);
+    h += layer(IMG.emptyBlue, 1, kb);
+    h += layer(IMG.after, inout(clamp((t - 18.6) / 0.9)), kb);
+    // вечер
+    if (t > 26.4) h += layer(IMG.night, inout(clamp((t - 26.4) / 1.4)), kb);
+    const link = (a, b, img, x, y, tx, ty, txt) => {
+      const p = win(t, a, b, .35, .3);
+      if (p <= 0) return '';
+      const q = spring(clamp((t - a) / .5));
+      return `<div class="thumb" style="left:${tx}px;top:${ty}px;background-image:url(${img});opacity:${p};transform:scale(${.5 + .5 * q})"></div>`
+        + `<svg class="lines" width="1080" height="1920" style="opacity:${p}"><line x1="${tx + 95}" y1="${ty + 190}" x2="${x}" y2="${y}" stroke="#F5F1EA" stroke-width="4" stroke-dasharray="10 9"/></svg>`
+        + dot(x, y, p) + tag(tx, ty + 210, txt, p);
+    };
+    h += link(19.4, 22.2, IMG.cypress, ...P.headboard, 'как кипарис');
+    h += link(20.6, 22.4, IMG.village, ...P.floor, 'тёплый, как огни');
+    h += link(22.2, 25.8, IMG.star, ...P.lamps, 'звёзды');
+    h += link(23.4, 25.9, IMG.moon, ...P.moon, 'луна');
+    if (t > 27.2) h += `<div class="bg" style="opacity:${win(t, 27.2, 30.4, .4, .3)}"></div><div class="center" style="top:1450px;opacity:${win(t, 27.4, 30.4, .4, .3)}"><h2>Вечером - <b>картина</b></h2></div>`;
+  }
+
+  // ---- 5. сравнение (30 - 34)
+  if (t >= 30.0 && t < 34.4) {
+    const a = win(t, 30.0, 34.4, .4, .3);
+    h += `<div class="card" style="opacity:${a}"></div>`;
+    const p1 = spring(clamp((t - 30.3) / .5)), p2 = spring(clamp((t - 30.6) / .5));
+    h += `<div class="center" style="top:300px;opacity:${a}"><h2 style="font-size:66px">Уютно вышло?<br><b>Или слишком смело?</b></h2></div>`;
+    h += `<div class="panel" style="left:84px;background-image:url(${IMG.before});opacity:${a};transform:translateY(${(1 - p1) * 80}px) rotate(-2deg)"><span>было</span></div>`;
+    h += `<div class="panel" style="left:566px;background-image:url(${IMG.night});opacity:${a};transform:translateY(${(1 - p2) * 80}px) rotate(2deg)"><span>по Ван Гогу</span></div>`;
+  }
+
+  // ---- 6. следующая картина (34 - 38)
+  if (t >= 34.0) {
+    const a = clamp((t - 34.0) / .4);
+    const p = spring(clamp((t - 34.4) / .6)), q = spring(clamp((t - 35.4) / .5));
+    h += `<div class="card" style="opacity:${a}"></div>`;
+    h += `<img class="logo" src="logo_light.png" style="opacity:${a}">`;
+    h += `<div class="center" style="top:330px;opacity:${a}"><h2 style="font-size:70px">Следующую картину<br><b>выбираете вы</b></h2></div>`;
+    h += `<div class="frame" style="opacity:${a};transform:scale(${.6 + .4 * p}) rotate(${(1 - p) * -6}deg)">?</div>`;
+    h += `<div class="btn" style="opacity:${clamp(q * 2)};transform:translateX(-50%) scale(${.7 + .3 * q})">Пишите в комментариях</div>`;
+  }
+  document.getElementById('s').innerHTML = h;
+};
+</script>
+<script src="positions.js"></script>
+<script>window.render(0);</script>
+</body>
+</html>
