@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<title>TEZIS Reels Cover Boitsya</title>
+<style>
+  @font-face { font-family:"Onest"; src:url(fonts/Onest-500.ttf); font-weight:500; }
+  @font-face { font-family:"Onest"; src:url(fonts/Onest-700.ttf); font-weight:700; }
+  @font-face { font-family:"Onest"; src:url(fonts/Onest-800.ttf); font-weight:800; }
+  :root { --copper:#C49A72; --ink:#1E1814; --milk:#F5F1EA; }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { background:#777; }
+  /* 9:16; в сетке профиля видна центральная зона 3:4 (y 240-1680) - весь текст внутри неё */
+  .s { width:1080px; height:1920px; position:relative; overflow:hidden; font-family:"Onest",sans-serif; color:#fff;
+       background:radial-gradient(900px 900px at 50% 1180px, #3A2C22, var(--ink) 70%); }
+  .logo { position:absolute; left:72px; top:290px; height:36px; }
+  .head { position:absolute; left:72px; right:72px; top:390px; }
+  .kick { font-size:25px; font-weight:500; letter-spacing:.32em; text-transform:uppercase; color:rgba(255,255,255,.7); }
+  .bar { width:92px; height:3px; background:var(--copper); margin:24px 0 30px; }
+  h1 { font-size:132px; font-weight:800; line-height:.92; letter-spacing:-.05em; text-transform:uppercase; }
+  h1 span { color:var(--copper); }
+  .q { position:absolute; right:40px; top:820px; font-size:620px; font-weight:800; line-height:1; color:rgba(196,154,114,.13); }
+  svg { position:absolute; left:50%; top:930px; transform:translateX(-50%); }
+  .sub { position:absolute; left:72px; right:72px; top:1500px; text-align:center; font-size:38px; font-weight:500; color:rgba(255,255,255,.88); }
+  .sub b { color:var(--copper); font-weight:700; }
+</style>
+</head>
+<body>
+<section class="s">
+  <img class="logo" src="logo_light.png" alt="TEZIS">
+  <div class="head">
+    <div class="kick">Ремонт  /  юмор</div>
+    <div class="bar"></div>
+    <h1>Кого<br>боится<br><span>прораб?</span></h1>
+  </div>
+  <div class="q">?</div>
+  <!-- каска прораба, нарисована кодом -->
+  <svg width="620" height="460" viewBox="0 0 620 460">
+    <defs>
+      <linearGradient id="g" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#E2BC94"/><stop offset=".55" stop-color="#C49A72"/><stop offset="1" stop-color="#9C7652"/>
+      </linearGradient>
+    </defs>
+    <ellipse cx="310" cy="418" rx="250" ry="26" fill="rgba(0,0,0,.35)"/>
+    <path d="M110 340 C110 170 200 80 310 80 C420 80 510 170 510 340 Z" fill="url(#g)"/>
+    <path d="M262 92 C268 160 270 250 270 340 L350 340 C350 250 352 160 358 92 C342 84 278 84 262 92 Z" fill="#D9B38B"/>
+    <path d="M150 300 C170 200 210 150 250 120" stroke="rgba(255,255,255,.35)" stroke-width="10" stroke-linecap="round" fill="none"/>
+    <rect x="40" y="332" width="540" height="46" rx="23" fill="#B58B63"/>
+    <rect x="40" y="332" width="540" height="14" rx="7" fill="rgba(255,255,255,.18)"/>
+    <!-- капля пота -->
+    <path d="M548 190 C548 190 520 232 520 250 A28 28 0 0 0 576 250 C576 232 548 190 548 190 Z" fill="#F5F1EA" opacity=".92"/>
+  </svg>
+  <div class="sub">Смотрите до конца - <b>ответ вас удивит</b></div>
+</section>
+</body>
+</html>
